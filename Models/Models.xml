@@ -1,0 +1,4158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Models</name>
+    </assembly>
+    <members>
+        <member name="T:Models.DB.b_area">
+            <summary>
+            区域表
+            </summary>
+        </member>
+        <member name="M:Models.DB.b_area.#ctor">
+            <summary>
+            区域表
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_area.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_area.parent_id">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_area.code">
+            <summary>
+            区域代码：街道为9位，其它为6位
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_area.name">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_area.pinyin">
+            <summary>
+            拼音码
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_area.is_disabled">
+            <summary>
+            是否禁用
+            </summary>
+        </member>
+        <member name="T:Models.DB.b_codebase">
+            <summary>
+            基础编码表
+            </summary>
+        </member>
+        <member name="M:Models.DB.b_codebase.#ctor">
+            <summary>
+            基础编码表
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_codebase.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_codebase.category_id">
+            <summary>
+            目录Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_codebase.code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_codebase.text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_codebase.pinyin">
+            <summary>
+            拼音
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_codebase.introduce">
+            <summary>
+            介绍说明
+            </summary>
+        </member>
+        <member name="T:Models.DB.b_code_category">
+            <summary>
+            编码目录表
+            </summary>
+        </member>
+        <member name="M:Models.DB.b_code_category.#ctor">
+            <summary>
+            编码目录表
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_code_category.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_code_category.name">
+            <summary>
+            目录名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_code_category.pinyin">
+            <summary>
+            拼音码
+            </summary>
+        </member>
+        <member name="P:Models.DB.b_code_category.is_disabled">
+            <summary>
+            是否禁用
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_activity">
+            <summary>
+            活动
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_activity.#ctor">
+            <summary>
+            活动
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.start_date">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.end_date">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.state">
+            <summary>
+            状态（1=正常，0=暂停）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_activity_coupon">
+            <summary>
+            活动优惠券关联
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_activity_coupon.#ctor">
+            <summary>
+            活动优惠券关联
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_coupon.activity_id">
+            <summary>
+            活动ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_coupon.coupon_id">
+            <summary>
+            优惠券ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_coupon.start_date">
+            <summary>
+            使用开始时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_coupon.end_date">
+            <summary>
+            使用结束时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_coupon.remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_activity_level">
+            <summary>
+            活动会员等级规则
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_activity_level.#ctor">
+            <summary>
+            活动会员等级规则
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.activity_id">
+            <summary>
+            活动id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.level_id">
+            <summary>
+            等级id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.start_date">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.end_date">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.money_integral">
+            <summary>
+            现金积分（x元=1积分）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.integral_money">
+            <summary>
+            积分兑现（x积分=1元）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.discount_rate">
+            <summary>
+            折扣率
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.actity_name">
+            <summary>
+            活动名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_activity_level.level_name">
+            <summary>
+            等级名称
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_archives">
+            <summary>
+            档案信息表
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_archives.#ctor">
+            <summary>
+            档案信息表
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.spell">
+            <summary>
+            拼音码（首字母）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.id_card">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.age">
+            <summary>
+            年龄
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.month">
+            <summary>
+            月
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.day">
+            <summary>
+            日
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.birthday">
+            <summary>
+            生日
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.phone">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.sex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.type_code">
+            <summary>
+            类型编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.state">
+            <summary>
+            状态（1=正常，0=黑名单）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.constellation">
+            <summary>
+            星座
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.zodiac">
+            <summary>
+            生肖
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.password">
+            <summary>
+            登陆密码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.constellation_code">
+            <summary>
+            星座编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.zodiac_code">
+            <summary>
+            生肖编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives.sex_code">
+            <summary>
+            性别编码
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_archives_activity_coupon">
+            <summary>
+            领取活动优惠券
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_archives_activity_coupon.#ctor">
+            <summary>
+            领取活动优惠券
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.activity_id">
+            <summary>
+            活动ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.coupon_id">
+            <summary>
+            优惠券ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.state">
+            <summary>
+            状态（1=已使用，0=未使用）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.start_date">
+            <summary>
+            使用开始时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.end_date">
+            <summary>
+            使用结束时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_activity_coupon.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_archives_card">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_archives_card.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.level_id">
+            <summary>
+            等级ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.level">
+            <summary>
+            等级
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.card_no">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.password">
+            <summary>
+            支付密码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.total_money">
+            <summary>
+            总金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.balance">
+            <summary>
+            余额
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.total_integral">
+            <summary>
+            总积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.integral">
+            <summary>
+            剩余积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.give_total_money">
+            <summary>
+            赠送总金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_card.give_balance">
+            <summary>
+            赠送余额
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_archives_extend">
+            <summary>
+            档案信息扩展表
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_archives_extend.#ctor">
+            <summary>
+            档案信息扩展表
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.qq">
+            <summary>
+            QQ
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.wechat">
+            <summary>
+            微信
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.occupation_code">
+            <summary>
+            职业编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.occupation">
+            <summary>
+            职业
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.income">
+            <summary>
+            收入
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.source_code">
+            <summary>
+            来源编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.source">
+            <summary>
+            来源
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.hobby">
+            <summary>
+            爱好
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.favour_way_code">
+            <summary>
+            偏爱诊疗方式编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.favour_way">
+            <summary>
+            偏爱诊疗方式
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.consume_habit_code">
+            <summary>
+            消费习惯编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.consume_habit">
+            <summary>
+            消费习惯
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.marital_status_code">
+            <summary>
+            婚姻状况编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.marital_status">
+            <summary>
+            婚姻状况
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.blood_type_code">
+            <summary>
+            血型编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.blood_type">
+            <summary>
+            血型
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.nation_code">
+            <summary>
+            民族编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.nation">
+            <summary>
+            民族
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.province_code">
+            <summary>
+            省编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.province">
+            <summary>
+            省
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.city_code">
+            <summary>
+            市编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.city">
+            <summary>
+            市
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.county_code">
+            <summary>
+            区编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.county">
+            <summary>
+            区
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.street_code">
+            <summary>
+            街道编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.street">
+            <summary>
+            街道
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.address">
+            <summary>
+            详细住址
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.contacts">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.contacts_phone">
+            <summary>
+            联系人手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.to_director_id">
+            <summary>
+            现负责人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.to_director">
+            <summary>
+            现负责人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_extend.remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_archives_level">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_archives_level.#ctor">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.min_integral">
+            <summary>
+            最小积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.max_integral">
+            <summary>
+            最大积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.money_integral">
+            <summary>
+            现金积分（x元=1积分）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.integral_money">
+            <summary>
+            积分兑现（x积分=1元）
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.discount_rate">
+            <summary>
+            折扣率
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_level.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_archives_tag">
+            <summary>
+            档案标签
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_archives_tag.#ctor">
+            <summary>
+            档案标签
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_tag.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_tag.tag_id">
+            <summary>
+            标签编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_archives_tag.tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_coupon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_coupon.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.use_money">
+            <summary>
+            使用金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.deduction_money">
+            <summary>
+            抵扣金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_coupon.status">
+            <summary>
+            1:启用0：禁用
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_habit">
+            <summary>
+            消费习惯
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_habit.#ctor">
+            <summary>
+            消费习惯
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_habit.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_habit.org_id">
+            <summary>
+            集团ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_habit.store_id">
+            <summary>
+            门店ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_habit.code">
+            <summary>
+            消费习惯编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_habit.name">
+            <summary>
+            消费习惯
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_habit.spell">
+            <summary>
+            拼音码（首字母）
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_maintain">
+            <summary>
+            客户关系维护
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_maintain.#ctor">
+            <summary>
+            客户关系维护
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.from_director_id">
+            <summary>
+            前负责人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.from_director">
+            <summary>
+            前负责人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.to_director_id">
+            <summary>
+            现负责人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.to_director">
+            <summary>
+            现负责人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.cause">
+            <summary>
+            负责人转换原因
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.from_store_id">
+            <summary>
+            前门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.to_store_id">
+            <summary>
+            现门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.from_store_name">
+            <summary>
+            前门店名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.to_store_name">
+            <summary>
+            现门店名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_maintain.id_card">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_tag.#ctor">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_tag.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_tag.org_id">
+            <summary>
+            集团ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_tag.store_id">
+            <summary>
+            门店ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_tag.tag_code">
+            <summary>
+            标签编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_tag.tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_tag.spell">
+            <summary>
+            拼音码（首字母）
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_treatment">
+            <summary>
+            偏爱诊疗方式
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_treatment.#ctor">
+            <summary>
+            偏爱诊疗方式
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_treatment.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_treatment.org_id">
+            <summary>
+            集团ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_treatment.store_id">
+            <summary>
+            门店ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_treatment.code">
+            <summary>
+            诊疗方式编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_treatment.name">
+            <summary>
+            诊疗方式
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_treatment.spell">
+            <summary>
+            拼音码（首字母）
+            </summary>
+        </member>
+        <member name="T:Models.DB.c_wechat_archives">
+            <summary>
+            微信档案关联
+            </summary>
+        </member>
+        <member name="M:Models.DB.c_wechat_archives.#ctor">
+            <summary>
+            微信档案关联
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_wechat_archives.openid">
+            <summary>
+            微信OpenID
+            </summary>
+        </member>
+        <member name="P:Models.DB.c_wechat_archives.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_action">
+            <summary>
+            功能表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_action.#ctor">
+            <summary>
+            功能表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.name">
+            <summary>
+            功能名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.pinyin">
+            <summary>
+            拼音码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.parent_id">
+            <summary>
+            上级Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.level">
+            <summary>
+            层级
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.is_action">
+            <summary>
+            是否功能，否表示目录
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.uri">
+            <summary>
+            资源地址
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.description">
+            <summary>
+            功能描述
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_action.action_type">
+            <summary>
+            0-平台功能 1-集团功能 2-门店功能
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_dept">
+            <summary>
+            门店部门
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_dept.#ctor">
+            <summary>
+            门店部门
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.org_id">
+            <summary>
+            集团Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.store_id">
+            <summary>
+            门店Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.name">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.code">
+            <summary>
+            部门编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.pinyin">
+            <summary>
+            拼音码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.is_reg">
+            <summary>
+            是否挂号科室
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.disabled">
+            <summary>
+            状态（0=停用，1=启用）
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.disabled_code">
+            <summary>
+            状态编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.introduce">
+            <summary>
+            简介
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.nature">
+            <summary>
+            性质
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_dept.nature_code">
+            <summary>
+            性质编码
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_employee">
+            <summary>
+            员工表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_employee.#ctor">
+            <summary>
+            员工表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.org_id">
+            <summary>
+            组织机构Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.pinyin">
+            <summary>
+            拼音码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.id_no">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.phone_no">
+            <summary>
+            手机号，同时用于登录
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.image_url">
+            <summary>
+            头像图片地址
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.password">
+            <summary>
+            登陆密码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.is_admin">
+            <summary>
+            是否管理员
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.create_time">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee.expire_time">
+            <summary>
+            失效时间
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_employee_profile">
+            <summary>
+            员工详情表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_employee_profile.#ctor">
+            <summary>
+            员工详情表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.id">
+            <summary>
+            使用SysUser表Id，一对一
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.no">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.email">
+            <summary>
+            电子邮件地址
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.sex_code">
+            <summary>
+            性别代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.sex_name">
+            <summary>
+            性别名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.birthday">
+            <summary>
+            出生日期
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.province_code">
+            <summary>
+            省代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.province_name">
+            <summary>
+            省名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.city_code">
+            <summary>
+            市代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.city_name">
+            <summary>
+            市名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.county_code">
+            <summary>
+            区县代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.county_name">
+            <summary>
+            区县名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.street_code">
+            <summary>
+            街道代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.street_name">
+            <summary>
+            街道名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_profile.address">
+            <summary>
+            详细地址
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_employee_role">
+            <summary>
+            员工角色表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_employee_role.#ctor">
+            <summary>
+            员工角色表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_role.employee_id">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_role.role_id">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_role.org_id">
+            <summary>
+            集团Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_role.store_id">
+            <summary>
+            门店Id，同一用户可在多个门店执业
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_role.dept_id">
+            <summary>
+            部门Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_employee_role.is_admin">
+            <summary>
+            是否管理员
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_entry">
+            <summary>
+            词条
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_entry.#ctor">
+            <summary>
+            词条
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_entry.employee_id">
+            <summary>
+            人员ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_entry.text">
+            <summary>
+            词条内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_entry.code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_image">
+            <summary>
+            图片（集团、门店、部门）
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_image.#ctor">
+            <summary>
+            图片（集团、门店、部门）
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_image.url">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_image.relation_code">
+            <summary>
+            关联编码
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_org">
+            <summary>
+            集团
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_org.#ctor">
+            <summary>
+            集团
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.pinyin">
+            <summary>
+            拼音码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.status">
+            <summary>
+            状态：0-待审 1-试用 2-正常
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.cert_status">
+            <summary>
+            实名认证状态：0-未认证 1-未通过 2-认证申请 3-已通过
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.legal_manager">
+            <summary>
+            法人
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.province_code">
+            <summary>
+            省代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.province_name">
+            <summary>
+            省名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.city_code">
+            <summary>
+            市代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.city_name">
+            <summary>
+            市名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.county_code">
+            <summary>
+            区县代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.county_name">
+            <summary>
+            区县名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.street_code">
+            <summary>
+            街道代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.street_name">
+            <summary>
+            街道名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.reg_address">
+            <summary>
+            注册地址
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.bank">
+            <summary>
+            开户行
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.bank_account">
+            <summary>
+            银行账号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.license_no">
+            <summary>
+            营业执照号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.license_path">
+            <summary>
+            营业执照图片路径
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.cert_no">
+            <summary>
+            执业资格证书号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.cert_path">
+            <summary>
+            执业资格证书路径
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.link_man">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.phone_no">
+            <summary>
+            联系人电话
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.office_address">
+            <summary>
+            办公地点
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.create_time">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.expire_time">
+            <summary>
+            失效时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org.legal_phone_no">
+            <summary>
+            法人手机号
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_org_action">
+            <summary>
+            集团功能表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_org_action.#ctor">
+            <summary>
+            集团功能表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org_action.org_id">
+            <summary>
+            集团Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org_action.action_id">
+            <summary>
+            功能Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_org_action.action_type">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_role">
+            <summary>
+            角色表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_role.#ctor">
+            <summary>
+            角色表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.store_id">
+            <summary>
+            门店Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.org_id">
+            <summary>
+            机构Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.dept_id">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.pinyin">
+            <summary>
+            拼音码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.disabled">
+            <summary>
+            状态（0=停用，1=启用）
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.disabled_code">
+            <summary>
+            状态编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role.introduce">
+            <summary>
+            简介
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_role_action">
+            <summary>
+            角色功能表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_role_action.#ctor">
+            <summary>
+            角色功能表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role_action.role_id">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_role_action.action_id">
+            <summary>
+            功能Id
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_sms_autograph">
+            <summary>
+            签名表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_sms_autograph.#ctor">
+            <summary>
+            签名表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_autograph.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_autograph.end_point">
+            <summary>
+            端点
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_autograph.access_key_id">
+            <summary>
+            访问密钥
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_autograph.secret_access_key">
+            <summary>
+            密钥存取密钥
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_autograph.topic_name">
+            <summary>
+            主题名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_autograph.free_sign_name">
+            <summary>
+            自由名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_autograph.org_id">
+            <summary>
+            集团ID
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_sms_send_record">
+            <summary>
+            发送记录
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_sms_send_record.#ctor">
+            <summary>
+            发送记录
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.autograph_id">
+            <summary>
+            签名ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.template_id">
+            <summary>
+            模板ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.phone_no">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.status">
+            <summary>
+            状态（1：成功；0：失败）
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.error">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.scene">
+            <summary>
+            使用场景
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.code">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.org_id">
+            <summary>
+            机构ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.send_time">
+            <summary>
+            发送时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.store_id">
+            <summary>
+            门店ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.expire_time">
+            <summary>
+            失效时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.sender_id">
+            <summary>
+            发送人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.sender">
+            <summary>
+            发送人
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_send_record.id_card">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_sms_template">
+            <summary>
+            短信模板表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_sms_template.#ctor">
+            <summary>
+            短信模板表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.name">
+            <summary>
+            模版名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.code">
+            <summary>
+            模版CODE
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.parameter">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.create_time">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.org_id">
+            <summary>
+            集团ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_sms_template.is_select">
+            <summary>
+            是否可选（1=可选，0=不可选）
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_store">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_store.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.id">
+            <summary>
+            自增主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.org_id">
+            <summary>
+            组织机构Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.no">
+            <summary>
+            门店编号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.manager">
+            <summary>
+            负责人
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.phone_no">
+            <summary>
+            负责人电话
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.province_code">
+            <summary>
+            省代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.province_name">
+            <summary>
+            省名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.city_code">
+            <summary>
+            市代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.city_name">
+            <summary>
+            市名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.county_code">
+            <summary>
+            区县代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.county_name">
+            <summary>
+            区县名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.street_code">
+            <summary>
+            街道代码
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.street_name">
+            <summary>
+            街道名称
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.address">
+            <summary>
+            详细地址
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.license_no">
+            <summary>
+            执照号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.license_path">
+            <summary>
+            执照图片路径
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.cert_no">
+            <summary>
+            执业资格证书号
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.cert_path">
+            <summary>
+            执业资格证书路径
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.status">
+            <summary>
+            状态： 0-待审 1-试用 2-正常
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.cert_status">
+            <summary>
+            实名认证状态：0-未认证 1-未通过 2-认证申请 3-已通过
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.create_time">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.expire_time">
+            <summary>
+            失效时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store.use_status">
+            <summary>
+            状态： -1-删除  0-停用 1-正常
+            </summary>
+        </member>
+        <member name="T:Models.DB.p_store_action">
+            <summary>
+            门店功能表
+            </summary>
+        </member>
+        <member name="M:Models.DB.p_store_action.#ctor">
+            <summary>
+            门店功能表
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store_action.store_id">
+            <summary>
+            门店Id
+            </summary>
+        </member>
+        <member name="P:Models.DB.p_store_action.action_id">
+            <summary>
+            功能Id
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_activity_img">
+            <summary>
+            活动图片
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_activity_img.#ctor">
+            <summary>
+            活动图片
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_activity_img.activity_id">
+            <summary>
+            活动ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_activity_img.img_url">
+            <summary>
+            图片路径
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_consume">
+            <summary>
+            消费记录
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_consume.#ctor">
+            <summary>
+            消费记录
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.card_no">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.consume_date">
+            <summary>
+            消费时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.money">
+            <summary>
+            消费金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.integral">
+            <summary>
+            减少积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.total_money">
+            <summary>
+            总金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.total_integral">
+            <summary>
+            总积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.discount_rate">
+            <summary>
+            折扣率
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.bill_no">
+            <summary>
+            消费单
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.integral_money">
+            <summary>
+            积分兑现（x积分=1元）
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.level">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.way_code">
+            <summary>
+            支付方式编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.way">
+            <summary>
+            支付方式
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_consume.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_feedback">
+            <summary>
+            反馈与投诉
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_feedback.#ctor">
+            <summary>
+            反馈与投诉
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.content">
+            <summary>
+            反馈内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.type">
+            <summary>
+            类型（0=反馈，1=投诉）
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.date">
+            <summary>
+            反馈时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_feedback_img">
+            <summary>
+            反馈图片
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_feedback_img.#ctor">
+            <summary>
+            反馈图片
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback_img.feedback_id">
+            <summary>
+            反馈ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_feedback_img.img_url">
+            <summary>
+            图片路径
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_follow_up">
+            <summary>
+            随访计划
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_follow_up.#ctor">
+            <summary>
+            随访计划
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.content">
+            <summary>
+            随访内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.task_date">
+            <summary>
+            待执行任务时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.state">
+            <summary>
+            状态（0=待执行，1=已执行）
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.executor_id">
+            <summary>
+            执行人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.executor">
+            <summary>
+            执行人
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.execute_date">
+            <summary>
+            执行时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.client_id">
+            <summary>
+            委托人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.client">
+            <summary>
+            委托人
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.client_date">
+            <summary>
+            委托时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_follow_up.id_card">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_logs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_logs.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.date">
+            <summary>
+            发生时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.state">
+            <summary>
+            状态（0=待处理，1=已处理）
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.parameter">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.ip">
+            <summary>
+            客户端IP
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.url">
+            <summary>
+            请求地址
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.before_data">
+            <summary>
+            修改前数据
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_logs.after_data">
+            <summary>
+            修改后数据
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_practice">
+            <summary>
+            随访记录
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_practice.#ctor">
+            <summary>
+            随访记录
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.content">
+            <summary>
+            实施内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.answer">
+            <summary>
+            答复内容
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.executor_id">
+            <summary>
+            执行人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.executor">
+            <summary>
+            执行人
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.execute_date">
+            <summary>
+            执行时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.modify_date">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.id_card">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_practice.follow_up_id">
+            <summary>
+            随访ID
+            </summary>
+        </member>
+        <member name="T:Models.DB.r_recharge">
+            <summary>
+            充值记录
+            </summary>
+        </member>
+        <member name="M:Models.DB.r_recharge.#ctor">
+            <summary>
+            充值记录
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.card_no">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.recharge_date">
+            <summary>
+            充值时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.recharge_money">
+            <summary>
+            充值金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.recharge_integral">
+            <summary>
+            增加积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.total_money">
+            <summary>
+            总金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.total_integral">
+            <summary>
+            总积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.way_code">
+            <summary>
+            支付方式编码
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.way">
+            <summary>
+            支付方式
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.bill_no">
+            <summary>
+            流水号
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.occurrence_date">
+            <summary>
+            发生时间
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.level">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.money_integral">
+            <summary>
+            现金积分（x元=1积分）
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.balance">
+            <summary>
+            余额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.integral">
+            <summary>
+            剩余积分
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.give_total_money">
+            <summary>
+            赠送总金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.give_balance">
+            <summary>
+            赠送余额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.give_money">
+            <summary>
+            赠送金额
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.creater_id">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:Models.DB.r_recharge.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ACardModel">
+            <summary>
+            会员卡实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ACardModel.levelId">
+            <summary>
+            等级id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ACardModel.phone">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ActivityCouponModel">
+            <summary>
+            活动优惠券
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityCouponModel.activityModel">
+            <summary>
+            活动
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityCouponModel.aCModel">
+            <summary>
+            优惠券List
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityCouponModel.cArray">
+            <summary>
+            下拉优惠券array
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityCouponModel.activityLevelModel">
+            <summary>
+            活动积分List
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ReturnArchivesModel">
+            <summary>
+            根据活动优惠券返回用户
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ReturnArchivesModel.activity_id">
+            <summary>
+            活动id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ReturnArchivesModel.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ReturnArchivesModel.coupList">
+            <summary>
+            优惠券List
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ActivityIMGModel">
+            <summary>
+            活动图片实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityIMGModel.activity_id">
+            <summary>
+            活动ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityIMGModel.vs">
+            <summary>
+            图片路径列表
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ActivityPageModel">
+            <summary>
+            活动分页实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.id">
+            <summary>
+            活动id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.start_date">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.end_date">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.state">
+            <summary>
+            状态（1=正常，0=暂停）
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.aCModel">
+            <summary>
+            优惠券List
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivityPageModel.alModel">
+            <summary>
+            活动积分List
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ActivitySearchModel">
+            <summary>
+            活动搜索
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.name">
+            <summary>
+            搜索名
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.storeId">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.orgId">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.order">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.orderType">
+            <summary>
+            排序方式
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.limit">
+            <summary>
+            单页数据条数
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.page">
+            <summary>
+            查询第几页
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.state">
+            <summary>
+            状态（1=正常，0=暂停）
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.start_date">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ActivitySearchModel.end_date">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.Archives">
+            <summary>
+            会员信息
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.Archives.archives">
+            <summary>
+            档案信息
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.Archives.archivesExtend">
+            <summary>
+            档案信息扩展
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.Archives.archivesTags">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.Archives.is_change_password">
+            <summary>
+            是否修改密码
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.archives_tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.archives_tag.tag_id">
+            <summary>
+            标签编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.archives_tag.tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ArchivesActivityCouponModel">
+            <summary>
+            领取活动实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesActivityCouponModel.id">
+            <summary>
+            活动id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesActivityCouponModel.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesActivityCouponModel.start_date">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesActivityCouponModel.end_date">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesActivityCouponModel.aCModel">
+            <summary>
+            优惠券List
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesActivityCouponModel.aArray">
+            <summary>
+            档案List
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ArchivesExtend">
+            <summary>
+            档案信息扩展
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.qq">
+            <summary>
+            QQ
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.wechat">
+            <summary>
+            微信
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.occupation_code">
+            <summary>
+            职业编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.occupation">
+            <summary>
+            职业
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.income">
+            <summary>
+            收入
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.source_code">
+            <summary>
+            来源编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.source">
+            <summary>
+            来源
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.hobby">
+            <summary>
+            爱好
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.favour_way_code">
+            <summary>
+            偏爱诊疗方式编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.favour_way">
+            <summary>
+            偏爱诊疗方式
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.consume_habit_code">
+            <summary>
+            消费习惯编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.consume_habit">
+            <summary>
+            消费习惯
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.marital_status_code">
+            <summary>
+            婚姻状况编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.marital_status">
+            <summary>
+            婚姻状况
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.blood_type_code">
+            <summary>
+            血型编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.blood_type">
+            <summary>
+            血型
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.nation_code">
+            <summary>
+            民族编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.nation">
+            <summary>
+            民族
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.province_code">
+            <summary>
+            省编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.province">
+            <summary>
+            省
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.city_code">
+            <summary>
+            市编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.city">
+            <summary>
+            市
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.county_code">
+            <summary>
+            区编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.county">
+            <summary>
+            区
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.street_code">
+            <summary>
+            街道编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.street">
+            <summary>
+            街道
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.address">
+            <summary>
+            详细住址
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.contacts">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.contacts_phone">
+            <summary>
+            联系人手机
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.to_director_id">
+            <summary>
+            现负责人ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.to_director">
+            <summary>
+            现负责人
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.card_no">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.archivesTags">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesExtend.store_name">
+            <summary>
+            门店名称
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ArchivesSearch">
+            <summary>
+            档案查询
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.name">
+            <summary>
+            名称/拼音码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.sexCode">
+            <summary>
+            性别编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.phone">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.idCard">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.ageStart">
+            <summary>
+            年龄段开始
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.ageEnd">
+            <summary>
+            年龄段结束
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.maritalStatusCode">
+            <summary>
+            婚姻状况编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.zodiacCode">
+            <summary>
+            生肖编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.constellationCode">
+            <summary>
+            星座编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.favourWayCode">
+            <summary>
+            诊疗方式编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.consumeHabitCode">
+            <summary>
+            消费习惯编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.state">
+            <summary>
+            状态（1=正常，0=黑名单，-1=所有）
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.isMe">
+            <summary>
+            是否本人负责
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.order">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.orderType">
+            <summary>
+            排序方式(0：升序 1：降序)
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.limit">
+            <summary>
+            单页数据条数
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.page">
+            <summary>
+            查询第几页（第一页为1）
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.storeId">
+            <summary>
+            门店ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.tags">
+             <summary>
+            标签（1,2,3...）
+             </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesSearch.to_director_id">
+            <summary>
+            现负责人ID
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.CardPageModel">
+            <summary>
+            会员卡分页实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.level_id">
+            <summary>
+            等级ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.level">
+            <summary>
+            等级
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.card_no">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.total_money">
+            <summary>
+            总金额
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.balance">
+            <summary>
+            余额
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.total_integral">
+            <summary>
+            总积分
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.integral">
+            <summary>
+            剩余积分
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.create_date">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.give_total_money">
+            <summary>
+            赠送总金额
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.give_balance">
+            <summary>
+            赠送余额
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.CardPageModel.couponList">
+            <summary>
+            优惠券列表
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.ArchivesCardModel">
+            <summary>
+            领取优惠券实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.state">
+            <summary>
+            状态（1=已使用，0=未使用）
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.activityname">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.use_money">
+            <summary>
+            使用金额
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.deduction_money">
+            <summary>
+            抵扣金额
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.start_date">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.ArchivesCardModel.end_date">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.FeedBackModel">
+            <summary>
+            反馈model
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.FeedBackModel.type">
+            <summary>
+            反馈类型(-1所有0反馈1投诉)
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.FollowExecute">
+            <summary>
+            随访执行
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.FollowExecute.id">
+            <summary>
+            随访ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.FollowExecute.answer">
+            <summary>
+            答复内容
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.RechargeModel">
+            <summary>
+            充值实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.archives_id">
+            <summary>
+            档案ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.archives">
+            <summary>
+            档案姓名
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.archives_phone">
+            <summary>
+            档案手机
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.card_no">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.money">
+            <summary>
+            充值金额
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.way_code">
+            <summary>
+            支付方式编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.way">
+            <summary>
+            支付方式
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.level_id">
+            <summary>
+            等级ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.level">
+            <summary>
+            等级
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.org_id">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RechargeModel.give_money">
+            <summary>
+            赠送金额
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.RJLModel">
+            <summary>
+            充值记录实体
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.name">
+            <summary>
+            搜索名
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.storeId">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.orgId">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.order">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.orderType">
+            <summary>
+            排序方式
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.limit">
+            <summary>
+            单页数据条数
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.page">
+            <summary>
+            查询第几页
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.startTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.endTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.level">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.phone">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.card_no">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.way_code">
+            <summary>
+            支付方式编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.RJLModel.bill_no">
+            <summary>
+            流水号
+            </summary>
+        </member>
+        <member name="T:Models.View.Crm.SearchMl">
+            <summary>
+            分页搜索数据
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.name">
+            <summary>
+            搜索名
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.storeId">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.orgId">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.order">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.orderType">
+            <summary>
+            排序方式
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.limit">
+            <summary>
+            单页数据条数
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.page">
+            <summary>
+            查询第几页
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.startTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Crm.SearchMl.endTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.DeptRoleMode">
+            <summary>
+            人员部门角色
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.DeptRoleMode.name">
+            <summary>
+            部门名
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.DeptRoleMode.roleName">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.DeptRoleMode.id">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.DeptRoleMode.roleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.EmployeeDispatch">
+            <summary>
+            人员调度
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.EmployeeDispatch.employeeID">
+            <summary>
+            人员ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.EmployeeDispatch.fromStoreID">
+            <summary>
+            调出门店
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.EmployeeDispatch.toStoreID">
+            <summary>
+            调入门店
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.EmployeeDispatch.deptRoles">
+            <summary>
+            部门角色
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.deptRole">
+            <summary>
+            部门角色
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.deptRole.dept_id">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.deptRole.role_id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Image.relation_code">
+            <summary>
+            关联编码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Image.vs">
+            <summary>
+            图片路径列表
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginPassword.pwd">
+            <summary>
+            原密码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginPassword.passwd">
+            <summary>
+            现密码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginPassword.passwd2">
+            <summary>
+            现密码2
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginPassword.code">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginPassword.phone_no">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.LoginStoreList">
+            <summary>
+            登录返回门店列表
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginStoreList.id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginStoreList.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.LoginStoreList.is_admin">
+            <summary>
+            是否门店超级管理员
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.OrgAction">
+            <summary>
+            集团权限
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.OrgAction.org_id">
+            <summary>
+            集团id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.OrgAction.actions">
+            <summary>
+            权限数组int[]
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.Action">
+            <summary>
+            功能菜单
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Action.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Action.action_type">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.OrgModel">
+            <summary>
+            机构启用，禁用
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.OrgModel.id">
+            <summary>
+            1启用，0禁用
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.OrgModel.orgId">
+            <summary>
+            机构id
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.PersonDeleteModel">
+            <summary>
+            删除人员所需
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDeleteModel.p_employee">
+            <summary>
+            人员表
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDeleteModel.pList">
+            <summary>
+            人员idList
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.PersonDetials">
+            <summary>
+            员工详情
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.no">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.email">
+            <summary>
+            电子邮件地址
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.sex_code">
+            <summary>
+            性别代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.sex_name">
+            <summary>
+            性别名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.birthday">
+            <summary>
+            出生日期
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.province_code">
+            <summary>
+            省代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.province_name">
+            <summary>
+            省名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.city_code">
+            <summary>
+            市代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.city_name">
+            <summary>
+            市名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.county_code">
+            <summary>
+            区县代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.county_name">
+            <summary>
+            区县名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.street_code">
+            <summary>
+            街道代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.street_name">
+            <summary>
+            街道名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonDetials.address">
+            <summary>
+            详细地址
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.PersonModel">
+            <summary>
+            人员Model
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonModel.p_employee">
+            <summary>
+            人员表（必传）
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonModel.p_detail">
+            <summary>
+            人员详情
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonModel.pdList">
+            <summary>
+            部门角色List(添加、编辑),传部门id，角色id（必传）
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonModel.deptList">
+            <summary>
+            部门角色List(详情展示)
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonModel.storeId">
+            <summary>
+            门店id(必传)
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.PersonModel.is_change_password">
+            <summary>
+            是否修改密码
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.Register">
+            <summary>
+            注册
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.legal_manager">
+            <summary>
+            法人
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.legal_phone_no">
+            <summary>
+            法人手机号
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.province_code">
+            <summary>
+            省代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.province_name">
+            <summary>
+            省名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.city_code">
+            <summary>
+            市代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.city_name">
+            <summary>
+            市名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.county_code">
+            <summary>
+            区县代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.county_name">
+            <summary>
+            区县名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.street_code">
+            <summary>
+            街道代码
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.street_name">
+            <summary>
+            街道名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.reg_address">
+            <summary>
+            注册地址
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.license_no">
+            <summary>
+            营业执照号
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.license_path">
+            <summary>
+            营业执照图片路径
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.link_man">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.phone_no">
+            <summary>
+            联系人电话
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Register.code">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Role.dept_name">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.RoleAction">
+            <summary>
+            角色权限
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.RoleAction.role_id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.RoleAction.actions">
+            <summary>
+            权限数组int[]
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.SearchModel">
+            <summary>
+            分页搜索数据
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.name">
+            <summary>
+            搜索名
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.order">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.orderType">
+            <summary>
+            排序方式
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.limit">
+            <summary>
+            单页数据条数
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.page">
+            <summary>
+            查询第几页
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.startTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.endTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.deptId">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.roleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SearchModel.storeId">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.SendSMS">
+            <summary>
+            短信发送
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMS.phone_no">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMS.store_id">
+            <summary>
+            门店Id
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.SendSMSGroup">
+            <summary>
+            短信群发
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMSGroup.templateId">
+            <summary>
+            模板ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMSGroup.storeID">
+            <summary>
+            门店ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMSGroup.isAll">
+            <summary>
+            是否所有
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMSGroup.toValues">
+            <summary>
+            模板对象json（{"code":"1111"}）
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMSGroup.content">
+            <summary>
+            发送内容
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.SendSMSGroup.phoneList">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.Store">
+            <summary>
+            门店
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Store.id">
+            <summary>
+            门店ID
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Store.name">
+            <summary>
+            门店名称
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.Store.is_admin">
+            <summary>
+            门店名称
+            </summary>
+        </member>
+        <member name="T:Models.View.Public.StoreAction">
+            <summary>
+            门店权限
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.StoreAction.store_id">
+            <summary>
+            门店id
+            </summary>
+        </member>
+        <member name="P:Models.View.Public.StoreAction.actions">
+            <summary>
+            权限数组int[]
+            </summary>
+        </member>
+    </members>
+</doc>

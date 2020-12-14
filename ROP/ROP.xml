@@ -1,0 +1,2988 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ROP</name>
+    </assembly>
+    <members>
+        <member name="T:ROP.Controllers.Crm.ACardController">
+            <summary>
+            会员卡--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ACardController.#ctor(Service.Repository.Interfaces.Crm.IACardService)">
+            <summary>
+            会员构造
+            </summary>
+            <param name="aCardService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ACardController.GetPageAsync(Models.View.Crm.ACardModel)">
+            <summary>
+            获取会员分页记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ACardController.Recharge(Models.View.Crm.RechargeModel)">
+            <summary>
+            充值
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ACardController.GetRechargePageAsync(Models.View.Crm.RJLModel,System.Boolean,System.Boolean)">
+            <summary>
+            充值记录分页数据
+            </summary>
+            <param name="model"></param>
+            <param name="name_or_phone"></param>
+            <param name="is_me"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ACardController.GetPrintAsync(Models.View.Crm.PrintModel)">
+            <summary>
+            获取打印数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.ActivityController">
+            <summary>
+            活动管理--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.#ctor(Service.Repository.Interfaces.Crm.IActivityService)">
+            <summary>
+            活动构造
+            </summary>
+            <param name="activityService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.GetPageAsync(Models.View.Crm.ActivitySearchModel)">
+            <summary>
+            活动分页数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.Add(Models.View.Crm.ActivityCouponModel)">
+            <summary>
+            添加活动、优惠券
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.Modify(Models.View.Crm.ActivityCouponModel)">
+            <summary>
+            编辑活动、添加优惠券
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.ModifyEnable(Models.DB.c_activity)">
+            <summary>
+            启用、禁用活动
+            </summary>
+            <param name="entity">state1正常0暂停</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.Delete(Models.DB.c_activity)">
+            <summary>
+            删除活动
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.CouponCollection(Models.View.Crm.ArchivesActivityCouponModel)">
+            <summary>
+            领取优惠券
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.ReturnArchives(Models.View.Crm.ReturnArchivesModel)">
+            <summary>
+            根据活动优惠券返回档案用户
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.Post(Models.View.Crm.ActivityIMGModel)">
+            <summary>
+            设置图片
+            </summary>
+            <param name="item">图片</param>
+            <returns>成功/失败</returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ActivityController.Get(System.Int32)">
+            <summary>
+            获取图片
+            </summary>
+            <param name="activity_id">活动id</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.ALevelController">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ALevelController.#ctor(Service.Repository.Interfaces.Crm.IALevelService)">
+            <summary>
+            会员等级构造
+            </summary>
+            <param name="aLevelService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ALevelController.GetPageAsync(Models.View.Crm.SearchMl)">
+            <summary>
+            会员等级分页
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ALevelController.GetList(System.Int32)">
+            <summary>
+            会员等级列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ALevelController.Add(Models.DB.c_archives_level)">
+            <summary>
+            添加会员等级
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ALevelController.Modify(Models.DB.c_archives_level)">
+            <summary>
+            编辑会员等级
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ALevelController.Delete(Models.DB.c_archives_level)">
+            <summary>
+            删除会员等级信息
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.ArchivesController">
+            <summary>
+            档案信息
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ArchivesController.#ctor(Service.Repository.Interfaces.Crm.IArchivesService)">
+            <summary>
+            
+            </summary>
+            <param name="archivesService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ArchivesController.Add(Models.View.Crm.Archives)">
+            <summary>
+            添加档案信息
+            </summary>
+            <param name="entity">档案信息信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ArchivesController.Modify(Models.View.Crm.Archives)">
+            <summary>
+            修改档案信息
+            </summary>
+            <param name="entity">档案信息信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ArchivesController.ModifyDisabled(Models.DB.c_archives)">
+            <summary>
+            修改状态
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ArchivesController.GetArchivesAsync(System.Int32)">
+            <summary>
+            根据档案ID获取信息
+            </summary>
+            <param name="archives_id">档案ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ArchivesController.GetListAsync(System.Int32,System.Boolean,System.String)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="storeID">门店ID</param>
+            <param name="isAll">是否所有</param>
+            <param name="name">姓名/手机号</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.ArchivesController.GetPagesAsync(Models.View.Crm.ArchivesSearch)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.CouponController">
+            <summary>
+            优惠券--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.CouponController.#ctor(Service.Repository.Interfaces.Crm.ICouponService)">
+            <summary>
+            优惠券构造
+            </summary>
+            <param name="couponService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.CouponController.GetPageAsync(Models.View.Crm.SearchMl)">
+            <summary>
+            获取优惠券分页数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.CouponController.Add(Models.DB.c_coupon)">
+            <summary>
+            添加优惠券
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.CouponController.Modify(Models.DB.c_coupon)">
+            <summary>
+            启用、禁用优惠券
+            </summary>
+            <param name="entity">0禁用1启用</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.CouponController.Delete(Models.DB.c_coupon)">
+            <summary>
+            删除优惠券
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.CouponController.GetList(System.Int32)">
+            <summary>
+            获取优惠券列表
+            </summary>
+            <param name="store_id">门店id</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.FeedBackController">
+            <summary>
+            投诉反馈--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FeedBackController.#ctor(Service.Repository.Interfaces.Crm.IFeedBackService)">
+            <summary>
+            投诉反馈构造
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FeedBackController.GetPageAsync(Models.View.Crm.FeedBackModel)">
+            <summary>
+            查询投诉反馈分页信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FeedBackController.Add(Models.DB.r_feedback)">
+            <summary>
+            添加投诉反馈信息
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FeedBackController.Modify(Models.DB.r_feedback)">
+            <summary>
+            编辑投诉反馈信息
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FeedBackController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            批量删除投诉反馈信息
+            </summary>
+            <param name="delList"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.FollowController">
+            <summary>
+            随访计划
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FollowController.#ctor(Service.Repository.Interfaces.Crm.IFollowService)">
+            <summary>
+            
+            </summary>
+            <param name="followService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FollowController.Modify(Models.DB.r_follow_up)">
+            <summary>
+            修改随访计划
+            </summary>
+            <param name="entity">随访计划信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FollowController.Client(Models.DB.r_follow_up)">
+            <summary>
+            委托随访计划
+            </summary>
+            <param name="entity">随访计划信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FollowController.Execute(Models.View.Crm.FollowExecute)">
+            <summary>
+            执行随访计划
+            </summary>
+            <param name="entity">随访计划信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.FollowController.GetPagesAsync(Models.View.Crm.FollowUpSearch)">
+            <summary>
+            获取分页列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.HabitController">
+            <summary>
+            消费习惯
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.HabitController.#ctor(Service.Repository.Interfaces.Crm.IHabitService)">
+            <summary>
+            
+            </summary>
+            <param name="habitService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.HabitController.Add(Models.DB.c_habit)">
+            <summary>
+            添加消费习惯
+            </summary>
+            <param name="entity">消费习惯信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.HabitController.Modify(Models.DB.c_habit)">
+            <summary>
+            修改消费习惯
+            </summary>
+            <param name="entity">消费习惯信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.HabitController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除消费习惯
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.HabitController.GetListAsync(System.String,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.HabitController.GetPagesAsync(System.String,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.MaintainController">
+            <summary>
+            客户关系维护
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.MaintainController.#ctor(Service.Repository.Interfaces.Crm.IMaintainService)">
+            <summary>
+            
+            </summary>
+            <param name="maintainService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.MaintainController.Add(Models.DB.c_maintain)">
+            <summary>
+            添加客户关系
+            </summary>
+            <param name="entity">客户关系信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.MaintainController.GetPagesAsync(System.String,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.PracticeController">
+            <summary>
+            回访计划
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.PracticeController.#ctor(Service.Repository.Interfaces.Crm.IPracticeService)">
+            <summary>
+            
+            </summary>
+            <param name="practiceService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.PracticeController.Add(Models.DB.r_practice)">
+            <summary>
+            添加回访记录
+            </summary>
+            <param name="entity">回访记录信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.PracticeController.Modify(Models.DB.r_practice)">
+            <summary>
+            修改回访记录
+            </summary>
+            <param name="entity">回访记录信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.PracticeController.GetPagesAsync(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="dateTimeStart">计划日期（开始）</param>
+            <param name="dateTimeEnd">计划日期（结束）</param>
+            <param name="storeID">门店ID</param>
+            <param name="executorId">执行人ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.PracticeController.Execute(Models.View.Crm.repayModel)">
+            <summary>
+            执行回访计划
+            </summary>
+            <param name="entity">回访计划信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.TagController">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TagController.#ctor(Service.Repository.Interfaces.Crm.ITagService)">
+            <summary>
+            
+            </summary>
+            <param name="tagService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TagController.Add(Models.DB.c_tag)">
+            <summary>
+            添加标签
+            </summary>
+            <param name="entity">标签信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TagController.Modify(Models.DB.c_tag)">
+            <summary>
+            修改标签
+            </summary>
+            <param name="entity">标签信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TagController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除标签
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TagController.GetListAsync(System.String,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TagController.GetPagesAsync(System.String,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Crm.TreatmentController">
+            <summary>
+            诊疗方式
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TreatmentController.#ctor(Service.Repository.Interfaces.Crm.ITreatmentService)">
+            <summary>
+            
+            </summary>
+            <param name="treatmentService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TreatmentController.Add(Models.DB.c_treatment)">
+            <summary>
+            添加诊疗方式
+            </summary>
+            <param name="entity">诊疗方式信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TreatmentController.Modify(Models.DB.c_treatment)">
+            <summary>
+            修改诊疗方式
+            </summary>
+            <param name="entity">诊疗方式信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TreatmentController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除诊疗方式
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TreatmentController.GetListAsync(System.String,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Crm.TreatmentController.GetPagesAsync(System.String,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Cus.ArchivesController">
+            <summary>
+            档案信息
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.#ctor(Service.Repository.Interfaces.Crm.IArchivesService,Service.Repository.Interfaces.Crm.IACardService)">
+            <summary>
+            
+            </summary>
+            <param name="archivesService"></param>
+            <param name="aCardService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.Login(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            登录验证
+            </summary>
+            <param name="username">用户名</param>
+            <param name="password">密码</param>
+            <param name="org_id">集团ID</param>
+            <param name="code">验证码</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.GetPhotoAsync">
+            <summary>
+            获取档案头像
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.ModifyPhotoByIdAsync(Models.View.Mobile.ArcPhoto)">
+            <summary>
+            编辑档案头像
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.ModifyPassword(Models.View.Mobile.ArcLoginPassword)">
+            <summary>
+            忘记密码
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.UpdatePassword(Models.View.Mobile.ArcLoginPassword)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.GetArcAccountAsync">
+            <summary>
+            获取档案账户
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Cus.ArchivesController.ArcModifyAsync(Models.View.Mobile.ArcArchives)">
+            <summary>
+            修改档案（客户端）
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.BillController">
+            <summary>
+            诊疗单据
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.BillController.#ctor(Service.Repository.Interfaces.His.IBillService)">
+            <summary>
+            
+            </summary>
+            <param name="billService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.BillController.GetPageAsync(Models.View.His.BillSearch)">
+            <summary>
+            查询诊疗单据分页数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.BillController.AddAsync(Models.DB.h_bill)">
+            <summary>
+            添加诊疗单据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.BillController.ModifyAsync(Models.DB.h_bill)">
+            <summary>
+            编辑诊疗单据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.BillController.DeleteAsync(Models.DB.h_bill)">
+            <summary>
+            删除诊疗单据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.ChargeController">
+            <summary>
+            收费结算
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.ChargeController.#ctor(Service.Repository.Interfaces.His.IChargeService)">
+            <summary>
+            
+            </summary>
+            <param name="chargeService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.ChargeController.ChargeAsync(Models.View.His.Charge)">
+            <summary>
+            收费
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ChargeController.GetListAsync(System.Int32)">
+            <summary>
+            门店待结算
+            </summary>
+            <param name="store_id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ChargeController.GetPagesAsync(System.Int32,System.Int16,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获得分页列表（待结算）
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="archives_id">客户ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ChargeController.GetBalancePagesAsync(System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获得分页列表（已结算单）
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="archives_id">客户ID</param>
+            <param name="doctorid">医生ID</param>
+            <param name="deptid">科室ID</param>
+            <param name="startbalancedate">结算时间（开始）</param>
+            <param name="endbalancedate">结算时间（结束）</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ChargeController.GetBalanceDetailPagesAsync(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获得分页列表（已结算单明细）
+            </summary>
+            <param name="balanceid">结算ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.CheckOutController">
+            <summary>
+            收费员交账单--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.CheckOutController.#ctor(Service.Repository.Interfaces.His.ICheckOutService)">
+            <summary>
+            
+            </summary>
+            <param name="checkOutService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.CheckOutController.GetPageAsync(Models.View.His.FalanceSearch)">
+            <summary>
+            获取门诊收费结算单分页数据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.CheckOutController.GetCheckOutPage(Models.View.His.CheckOutSearch)">
+            <summary>
+            获取收账单分页数据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.CheckOutController.GetBalancePage(Models.View.His.FalanceSearch)">
+            <summary>
+            根据结账id获取结算分页数据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.CheckOutController.AccoutAsync(Models.View.His.CheckOutModel)">
+            <summary>
+            交账
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.ClinicRecordController">
+            <summary>
+            就诊
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.#ctor(Service.Repository.Interfaces.His.IClinicRecordService)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.SignAsync(Models.View.His.Sign)">
+            <summary>
+            签到
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.GetPagesAsync(System.Int32,System.Int16,System.Int16,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获得分页列表（签到）
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="state_id">状态（1=已签到，0=未签到）</param>
+            <param name="type_id">分类（1=门诊，2=康复）</param>
+            <param name="name">客户名称/手机号</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <param name="is_me">是否自己客户</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.GetByDoctorAsync(System.Int32,System.Int16)">
+            <summary>
+            根据医生获取待接诊人
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="state">状态（0=待接诊，1=已接诊，2=已完成）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.ClinicAsync(Models.View.His.Clinic)">
+            <summary>
+            接诊
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.GetMedicalRecordAsync(System.Int32)">
+            <summary>
+            获取门诊病历
+            </summary>
+            <param name="clinic_id">就诊ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.MedicalRecordAsync(Models.DB.his_clinic_mr)">
+            <summary>
+            门诊病历
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.PrescriptionAsync(Models.View.His.Prescription)">
+            <summary>
+            开处方
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.GetPrescriptionAsync(System.Int32,System.Int32)">
+            <summary>
+            获取处方
+            </summary>
+            <param name="clinic_id">就诊ID</param>
+            <param name="typeid">单据类型ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.Delete(Models.DB.his_applybill)">
+            <summary>
+            删除处方
+            </summary>
+            <param name="entity">挂号类别</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.FinishAsync(Models.DB.his_applybill)">
+            <summary>
+            完成诊疗
+            </summary>
+            <param name="entity">传clinicid</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ClinicRecordController.GetClinicMrListAsync(System.Int32,System.Int16,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            获得病历列表
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="archives_id">会员ID</param>
+            <param name="start_clinic_time">就诊时间（开始）</param>
+            <param name="end_clinic_time">就诊时间（结束）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.EmpscheduleController">
+            <summary>
+            排班
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.EmpscheduleController.#ctor(Service.Repository.Interfaces.His.IEmpscheduleService)">
+            <summary>
+            
+            </summary>
+            <param name="empscheduleService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.EmpscheduleController.Get(System.Int32,System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            获取排班
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="deptid">部门ID</param>
+            <param name="orderbegin">开始时间</param>
+            <param name="orderend">结束时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.EmpscheduleController.Post(Models.View.His.Empschedule)">
+            <summary>
+            设置排班
+            </summary>
+            <param name="item">排班</param>
+            <returns>成功/失败</returns>
+        </member>
+        <member name="M:ROP.Controllers.His.EmpscheduleController.GetYearAsync(System.Int32,System.Int32)">
+            <summary>
+            获取存在排班的年份
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="deptid">部门ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.EmpscheduleController.GetDateAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取排班时间段
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="deptid">部门ID</param>
+            <param name="year">年份</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.EquipmentSchedulingController">
+            <summary>
+            器械设备排班
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.EquipmentSchedulingController.#ctor(Service.Repository.Interfaces.His.IEquipmentSchedulingService)">
+            <summary>
+            
+            </summary>
+            <param name="empscheduleSchedulingService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.EquipmentSchedulingController.ExecuteAsync(Models.View.His.Execute)">
+            <summary>
+            执行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.EquipmentSchedulingController.GetPagesAsync(Models.View.His.EquipmentSchedulingSearch)">
+            <summary>
+            获得分页列表
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.ItemController">
+            <summary>
+            项目--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.#ctor(Service.Repository.Interfaces.His.IItemService)">
+            <summary>
+            
+            </summary>
+            <param name="itemService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.GetItemAsync(Models.View.His.ItemSearch)">
+            <summary>
+            获取项目分页数据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.GetFeeList(System.Int32)">
+            <summary>
+            获取费别下拉数据
+            </summary>
+            <param name="typeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.AddItem(Models.View.His.ItemModel)">
+            <summary>
+            添加项目
+            </summary>
+            <param name="entity">项目信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.ModifyItem(Models.View.His.ItemModel)">
+            <summary>
+            编辑项目
+            </summary>
+            <param name="entity">项目信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.GetItemSpecAsync(System.Int32,System.String)">
+            <summary>
+            获取项目规格List
+            </summary>
+            <param name="feeType">费别id</param>
+            <param name="name">项目名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.DeleteAsync(Models.DB.h_item)">
+            <summary>
+            删除项目
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.GetItemPageAsync(Models.View.His.ItemPage)">
+            <summary>
+            获取开方项目分页
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemController.GetEquipmentList">
+            <summary>
+            获取设备项目
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.ItemDirController">
+            <summary>
+            项目--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemDirController.#ctor(Service.Repository.Interfaces.His.IItemDirService)">
+            <summary>
+            
+            </summary>
+            <param name="itemService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemDirController.Add(Models.DB.h_itemdir)">
+            <summary>
+            添加项目目录
+            </summary>
+            <param name="entity">项目目录信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemDirController.Modify(Models.DB.h_itemdir)">
+            <summary>
+            编辑项目目录
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemDirController.Delete(Models.DB.h_itemdir)">
+            <summary>
+            删除目录
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemDirController.GetItemTree">
+            <summary>
+            获取目录树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemDirController.GetItemType(System.Int32,System.Int32)">
+            <summary>
+            获取项目类别
+            </summary>
+            <param name="typeId">没有传-1</param>
+            <param name="parentId">目录id</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.ItemSpecController">
+            <summary>
+            项目规格--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemSpecController.#ctor(Service.Repository.Interfaces.His.IItemSpecService)">
+            <summary>
+            
+            </summary>
+            <param name="itemSpecService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemSpecController.GetPageAsync(Models.View.His.ItemSpecSearch)">
+            <summary>
+            获取项目规格分页数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemSpecController.AddAsync(Models.DB.h_itemspec)">
+            <summary>
+            添加项目规格
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemSpecController.ModifyAsync(Models.DB.h_itemspec)">
+            <summary>
+            编辑项目规格
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemSpecController.DeleteAsync(Models.DB.h_itemspec)">
+            <summary>
+            删除规格
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ItemSpecController.GetListAsync(System.Int32)">
+            <summary>
+            数据列表
+            </summary>
+            <param name="item_id">项目ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.ManufactoryController">
+            <summary>
+            厂商--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.ManufactoryController.#ctor(Service.Repository.Interfaces.His.IManufactoryService)">
+            <summary>
+            
+            </summary>
+            <param name="manufactoryService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.ManufactoryController.GetPageAsync(Models.View.His.ManufactorySearch)">
+            <summary>
+            查询厂商分页数据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ManufactoryController.AddAsync(Models.DB.h_manufactor)">
+            <summary>
+            添加厂商
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ManufactoryController.ModifyAsync(Models.DB.h_manufactor)">
+            <summary>
+            编辑厂商
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ManufactoryController.DeleteAsync(Models.DB.h_manufactor)">
+            <summary>
+            删除厂商
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.ManufactoryController.SetManufactorClass(Models.View.His.ManufactorClassModel)">
+            <summary>
+            设置厂商分类
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.PackageController">
+            <summary>
+            套餐--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.#ctor(Service.Repository.Interfaces.His.IPackageService)">
+            <summary>
+            
+            </summary>
+            <param name="packageService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.GetPageAsync(Models.View.His.PackSearch)">
+            <summary>
+            套餐分页
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.GetItemPageAsync(Models.View.His.PackItemSearch)">
+            <summary>
+            套餐项目分页
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.GetList(System.Int32,System.Int32)">
+            <summary>
+            获取套餐列表
+            </summary>
+            <param name="typeId"></param>
+            <param name="storeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.AddAsync(Models.View.His.PackageModel)">
+            <summary>
+            添加套餐
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.UpdateAsync(Models.View.His.PackageUpdateModel)">
+            <summary>
+            编辑套餐名
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.ModifyAsync(Models.View.His.PackageEntity)">
+            <summary>
+            编辑套餐
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.PackageController.DeleteAsync(Models.View.His.PackageEntity)">
+            <summary>
+            删除套餐
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.RegisterController">
+            <summary>
+            预约挂号
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterController.#ctor(Service.Repository.Interfaces.His.IRegisterService)">
+            <summary>
+            
+            </summary>
+            <param name="registerService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterController.GetByDeptAndDateAsync(System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            根据科室和日期获取医生排班
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="deptid">科室ID</param>
+            <param name="date">指定日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterController.GetByDoctorAsync(System.Int32,System.Int32)">
+            <summary>
+            根据医生获取最近一周排班
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="doctor_id">医生ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterController.AddAsync(Models.View.His.HisRegister)">
+            <summary>
+            预约挂号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterController.GetPagesAsync(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获得分页列表
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="dept_id">科室ID</param>
+            <param name="doctor_id">科室ID</param>
+            <param name="type_id">类别ID</param>
+            <param name="orderflag">预约标志</param>
+            <param name="stateid">状态ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterController.ModifyDateAsync(Models.View.His.ModifyDateModel)">
+            <summary>
+            更改挂号日期
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.His.RegisterTypeController">
+            <summary>
+            挂号类别
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterTypeController.#ctor(Service.Repository.Interfaces.His.IRegisterTypeService)">
+            <summary>
+            
+            </summary>
+            <param name="registerTypeService"></param>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterTypeController.Add(Models.View.His.RegisterType)">
+            <summary>
+            添加挂号类别
+            </summary>
+            <param name="entity">挂号类别信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterTypeController.Modify(Models.View.His.RegisterType)">
+            <summary>
+            修改挂号类别
+            </summary>
+            <param name="entity">挂号类别信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterTypeController.Delete(Models.DB.his_registertype)">
+            <summary>
+            删除挂号类别
+            </summary>
+            <param name="entity">挂号类别</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterTypeController.GetListAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            数据列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="orderflag">预约标志</param>
+            <param name="stateid">状态ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.His.RegisterTypeController.GetPagesAsync(System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获得分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="orderflag">预约标志</param>
+            <param name="stateid">状态ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Mobile.ArchivesController">
+            <summary>
+            客户
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.#ctor(Service.Repository.Interfaces.Crm.IACardService,Service.Repository.Interfaces.Crm.IArchivesService)">
+            <summary>
+            
+            </summary>
+            <param name="aCardService"></param>
+            <param name="archivesService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.GetRechargeAsync(System.Int16)">
+            <summary>
+            获取充值业绩
+            </summary>
+            <param name="type">类型（1=年 2=月 3=日）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.GetArchivesCountAsync(System.Int16)">
+            <summary>
+            获取客户量
+            </summary>
+            <param name="type">类型（1=年 2=月 3=日）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.GetRechargeOrderAsync(System.Int32,System.Int16)">
+            <summary>
+            获取充值业绩排行
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="type">类型（1=年 2=月 3=日）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.GetTotalRechargeOrderAsync(System.Int32,System.Int16)">
+            <summary>
+            获取充值业绩排行
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="type">类型（0=所有 1=年 2=月 3=日）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.MobileAdd(Models.View.Mobile.MobileArchives)">
+            <summary>
+            添加档案信息
+            </summary>
+            <param name="entity">档案信息信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.GetMobileCardPagesAsync(System.String,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取会员分页记录
+            </summary>
+            <param name="str">姓名/手机号</param>
+            <param name="storeID">门店ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.MobileModifyAsync(Models.View.Mobile.MobileArchives)">
+            <summary>
+            修改档案信息
+            </summary>
+            <param name="entity">档案信息信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ArchivesController.GetAccountAsync(System.Int32)">
+            <summary>
+            根据Id获取档案账户
+            </summary>
+            <param name="id">档案ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Mobile.ClinicRecordController">
+            <summary>
+            就诊
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ClinicRecordController.#ctor(Service.Repository.Interfaces.His.IClinicRecordService)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.ClinicRecordController.GetSignListAsync(System.Int32,System.Int16)">
+            <summary>
+            获取负责人客户签到列表
+            </summary>
+            <param name="store_id">门店ID</param>
+            <param name="state_id">状态（1=已签到，0=未签到）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Mobile.EmployeeController">
+            <summary>
+            人员
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.EmployeeController.#ctor(Service.Repository.Interfaces.Public.IPersonService)">
+            <summary>
+            
+            </summary>
+            <param name="personService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.EmployeeController.GetPhotoByIdAsync(System.Int32)">
+            <summary>
+            根据Id获取人员头像
+            </summary>
+            <param name="id">人员ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.EmployeeController.Modify(Models.View.Mobile.Employee)">
+            <summary>
+            编辑人员
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.EmployeeController.ModifyPhotoByIdAsync(Models.View.Mobile.Photo)">
+            <summary>
+            编辑人员头像
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Mobile.EmployeeController.GetDistributionQrCode(System.Int32)">
+            <summary>
+            获取分销二维码
+            </summary>
+            <param name="store_id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.ActionController">
+            <summary>
+            菜单功能
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.ActionController.#ctor(Service.Repository.Interfaces.Public.IActionService)">
+            <summary>
+            
+            </summary>
+            <param name="actionService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.ActionController.Add(Models.DB.p_action)">
+            <summary>
+            添加菜单功能
+            </summary>
+            <param name="entity">菜单功能信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ActionController.Modify(Models.DB.p_action)">
+            <summary>
+            修改菜单功能
+            </summary>
+            <param name="entity">菜单功能信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ActionController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除菜单功能
+            </summary>
+            <param name="list">菜单功能ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ActionController.GetMenuTreeAsync(System.Int32)">
+            <summary>
+            获取菜单树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ActionController.GetActionTreeAsync(System.Int32,System.Int32)">
+            <summary>
+            获取功能表
+            </summary>
+            <param name="storeId">门店ID</param>
+            <param name="setType">类型（-1=所有，0=平台，1=集团，2=门店）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ActionController.GetPagesAsync(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            分页方式获取功能表
+            </summary>
+            <param name="parentId">上级Id</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.AreaController">
+            <summary>
+            区域
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.AreaController.#ctor(Service.Repository.Interfaces.Public.IAreaService)">
+            <summary>
+            
+            </summary>
+            <param name="areaService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.AreaController.Add(Models.DB.b_area)">
+            <summary>
+            添加区域
+            </summary>
+            <param name="entity">区域信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.AreaController.Modify(Models.DB.b_area)">
+            <summary>
+            修改区域
+            </summary>
+            <param name="entity">区域信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.AreaController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除区域
+            </summary>
+            <param name="list">区域ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.AreaController.GetListAsync(System.String,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="parentNum">上级编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.AreaController.GetPagesAsync(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.BaseCodeController">
+            <summary>
+            基础编码（固定）
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.#ctor(Service.Repository.IBaseServer{Models.DB.b_basecode})">
+            <summary>
+            
+            </summary>
+            <param name="baseServer"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetSignalNumberAsync">
+            <summary>
+            获取号别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetHospitalChargeLevelAsync">
+            <summary>
+            获取医院收费等级
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetPopClassAsync">
+            <summary>
+            获取人群分类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDocClassAsync">
+            <summary>
+            获取档案分类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetPersonnelAttributesAsync">
+            <summary>
+            获取人员属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDrugDocClassAsync">
+            <summary>
+            获取药品单据分类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDeptClassAsync">
+            <summary>
+            获取部门类别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDeptNatureAsync">
+            <summary>
+            获取科室性质
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetProjectLevelAsync">
+            <summary>
+            获取项目等级
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetProjectTypeAsync">
+            <summary>
+            获取项目类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetProjectRestrictionTypeAsync">
+            <summary>
+            获取项目限制类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDrugClassAsync">
+            <summary>
+            获取药品分类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetInspectionItemsTypeAsync">
+            <summary>
+            获取检查项目-类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetMedicalCategoryAsync">
+            <summary>
+            获取就医类别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetTypesOfTimberAsync">
+            <summary>
+            获取卫材类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDtptAsync">
+            <summary>
+            获取诊疗项目-治疗
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDtpnAsync">
+            <summary>
+            获取诊疗项目-护理
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDtiiAsync">
+            <summary>
+            获取诊疗项目-检验
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDtpoAsync">
+            <summary>
+            获取诊疗项目-手术
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDtiaAsync">
+            <summary>
+            获取诊疗项目-麻醉
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetSymptomCharacteristicsAsync">
+            <summary>
+            获取症状特征
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetPocmAsync">
+            <summary>
+            获取中药属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetSgcAsync">
+            <summary>
+            获取服务商品分类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetCilocAsync">
+            <summary>
+            获取收费项目-护理等级
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetDtpsAsync">
+            <summary>
+            获取诊疗项目-特殊
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetChargeItemOtherAsync">
+            <summary>
+            获取收费项目-其他
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetCitcAsync">
+            <summary>
+            获取收费项目-治疗类别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetCicotcmAsync">
+            <summary>
+            获取收费项目-中医类别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetSpecialAdministrationMethodAsync">
+            <summary>
+            获取特殊给药方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetCategoryOfPracticeAsync">
+            <summary>
+            获取执业类别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetClomrmAsync">
+            <summary>
+            获取病历档案管理密级
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetKFAsync">
+            <summary>
+            获取康复部门类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetArchivesTypeAsync">
+            <summary>
+            获取客户类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetConstellationAsync">
+            <summary>
+            获取星座
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetZodiacAsync">
+            <summary>
+            获取生肖
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetEducationAsync">
+            <summary>
+            获取文化程度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetOccupationAsync">
+            <summary>
+            获取职业
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetABOAsync">
+            <summary>
+            获取ABO血型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetRHAsync">
+            <summary>
+            获取RH血型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetNationAsync">
+            <summary>
+            获取民族
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetMaritalStatusAsync">
+            <summary>
+            获取婚姻状况
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetEmployeeNatureAsync">
+            <summary>
+            获取人员性质
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetSexAsync">
+            <summary>
+            获取性别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetRelationAsync">
+            <summary>
+            获取关系
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetProDutiesAsync">
+            <summary>
+            获取专业职务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetServiceAsync">
+            <summary>
+            获取服务对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetFeeAsync">
+            <summary>
+            获取费别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetSexLimitAsync">
+            <summary>
+            获取性别限制
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetFeeLevelAsync">
+            <summary>
+            获取费用等级
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetFrequencyAsync">
+            <summary>
+            获取频率
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.BaseCodeController.GetArchivesClassAsync">
+            <summary>
+            获取客户分类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.CodeBaseController">
+            <summary>
+            基础编码
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeBaseController.#ctor(Service.Repository.IBaseServer{Models.DB.b_codebase})">
+            <summary>
+            
+            </summary>
+            <param name="baseServer"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeBaseController.Add(Models.DB.b_codebase)">
+            <summary>
+            添加基础编码
+            </summary>
+            <param name="entity">基础编码信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeBaseController.Modify(Models.DB.b_codebase)">
+            <summary>
+            修改基础编码
+            </summary>
+            <param name="entity">基础编码信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeBaseController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除基础编码
+            </summary>
+            <param name="list">基础编码ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeBaseController.GetListAsync(System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="categoryId">目录ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeBaseController.GetPagesAsync(System.String,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="text">名称</param>
+            <param name="categoryId">目录ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.CodeCategoryController">
+            <summary>
+            编码目录
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeCategoryController.#ctor(Service.Repository.IBaseServer{Models.DB.b_code_category})">
+            <summary>
+            
+            </summary>
+            <param name="baseServer"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeCategoryController.Add(Models.DB.b_code_category)">
+            <summary>
+            添加编码目录
+            </summary>
+            <param name="entity">编码目录信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeCategoryController.Modify(Models.DB.b_code_category)">
+            <summary>
+            修改编码目录
+            </summary>
+            <param name="entity">编码目录信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeCategoryController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除编码目录
+            </summary>
+            <param name="list">编码目录ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.CodeCategoryController.GetPagesAsync(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.ConsRoomController">
+            <summary>
+            诊室
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.ConsRoomController.#ctor(Service.Repository.Interfaces.Public.IConsRoomService)">
+            <summary>
+            
+            </summary>
+            <param name="consRoomService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.ConsRoomController.Add(Models.View.Public.ConsRoomDept)">
+            <summary>
+            添加诊室
+            </summary>
+            <param name="entity">诊室信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ConsRoomController.Modify(Models.View.Public.ConsRoomDept)">
+            <summary>
+            修改诊室
+            </summary>
+            <param name="entity">诊室信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ConsRoomController.Delete(Models.DB.p_cons_room)">
+            <summary>
+            删除诊室
+            </summary>
+            <param name="entity">诊室</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ConsRoomController.GetListAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="deptID">部门ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ConsRoomController.GetPagesAsync(System.Int32,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获得分页列表
+            </summary>
+            <param name="storeId">门店ID</param>
+            <param name="name">名称</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.DeptController">
+            <summary>
+            部门
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.#ctor(Service.Repository.Interfaces.Public.IDeptService)">
+            <summary>
+            
+            </summary>
+            <param name="deptService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.Add(Models.View.Public.DeptExtent)">
+            <summary>
+            添加部门
+            </summary>
+            <param name="entity">部门信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.Modify(Models.View.Public.DeptExtent)">
+            <summary>
+            修改部门
+            </summary>
+            <param name="entity">部门信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.ModifyDisabled(Models.DB.p_dept)">
+            <summary>
+            修改状态（状态（0=停用，1=启用））
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.Delete(Models.DB.p_dept)">
+            <summary>
+            删除部门
+            </summary>
+            <param name="entity">部门</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.GetListAsync(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="disabledCode">状态（-1=所有，0=停用，1=启用）</param>
+            <param name="nature">性质</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.GetPagesAsync(Models.View.Public.DeptSearchModel)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param model="model">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.GetCusList(System.Int32)">
+            <summary>
+            获取挂号科室
+            </summary>
+            <param name="storeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.DeptController.GetDeptIntroduce(System.Int32)">
+            <summary>
+            获取科室简介
+            </summary>
+            <param name="deptId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.EntryController">
+            <summary>
+            词条
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.EntryController.#ctor(Service.Repository.Interfaces.Public.IEntryService)">
+            <summary>
+            
+            </summary>
+            <param name="entryService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.EntryController.Add(Models.DB.p_entry)">
+            <summary>
+            添加词条
+            </summary>
+            <param name="entity">词条信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EntryController.Modify(Models.DB.p_entry)">
+            <summary>
+            修改词条
+            </summary>
+            <param name="entity">词条信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EntryController.Delete(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除词条
+            </summary>
+            <param name="list">词条</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EntryController.GetListAsync(System.String)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">词条内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EntryController.GetPagesAsync(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">词条内容</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.EquipmentController">
+            <summary>
+            器械设备
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.#ctor(Service.Repository.Interfaces.Public.IEquipmentService)">
+            <summary>
+            器械设备
+            </summary>
+            <param name="equipmentService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.AddAsync(Models.View.Public.Equipment)">
+            <summary>
+            添加器械设备
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.GetPagesAsync(Models.View.Public.EquipmentPagesSearch)">
+            <summary>
+            获得分页列表
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.ModifyAsync(Models.View.Public.Equipment)">
+            <summary>
+            修改器械设备
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.AddDetialsAsync(Models.DB.p_equipment_detials)">
+            <summary>
+            添加器械设备详细
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.ModifyDetialsAsync(Models.DB.p_equipment_detials)">
+            <summary>
+            修改器械设备详细
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.ModifyDetialsStateAsync(Models.DB.p_equipment_detials)">
+            <summary>
+            修改器械设备详细状态
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.EquipmentController.GetDetialsPagesAsync(Models.View.Public.EquipmentDetialsPagesSearch)">
+            <summary>
+            获得器械设备详细分页列表
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.HomeController">
+            <summary>
+            首页
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.HomeController.#ctor(Service.Repository.Interfaces.Public.IHomeService)">
+            <summary>
+            
+            </summary>
+            <param name="homeService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.HomeController.GetFestivalAsync">
+            <summary>
+            获取节日（包括生日档案）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.HomeController.GetFollowAsync">
+            <summary>
+            获取随访计划
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.HomeController.GetLowerBalance">
+            <summary>
+            获取客户余额下限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.HomeController.UpdateBirthday(Models.View.Public.UpdateModel)">
+            <summary>
+            修改生日消息已读
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.HomeController.UpdateFollowUp(Models.View.Public.UpdateModel)">
+            <summary>
+            修改随访消息已读
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.HomeController.UpdateBalanceLower(Models.View.Public.UpdateModel)">
+            <summary>
+            修改余额下限消息已读
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.ImageController">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.ImageController.#ctor(Service.Repository.Interfaces.Public.IImagesService)">
+            <summary>
+            
+            </summary>
+            <param name="imagesService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.ImageController.Get(System.String)">
+            <summary>
+            获取图片
+            </summary>
+            <param name="realtionCode">关联编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.ImageController.Post(Models.View.Public.Image)">
+            <summary>
+            设置图片
+            </summary>
+            <param name="item">图片</param>
+            <returns>成功/失败</returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.LoginController">
+            <summary>
+            登录--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.LoginController.#ctor(Service.Repository.Interfaces.Public.ILoginService)">
+            <summary>
+            登录构造
+            </summary>
+            <param name="loginServer"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.LoginController.Login(System.String,System.String,System.String)">
+            <summary>
+            登录验证
+            </summary>
+            <param name="username">用户名</param>
+            <param name="password">密码</param>
+            <param name="code">验证码</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.LoginController.Modify(Models.View.Public.LoginPassword)">
+            <summary>
+            忘记密码
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.LoginController.GetUser(System.String)">
+            <summary>
+            获取用户是否存在
+            </summary>
+            <param name="phone">手机号</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.LoginController.UpdatePassword(Models.View.Public.LoginPassword)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.OrgActionController">
+            <summary>
+            集团权限
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgActionController.#ctor(Service.Repository.Interfaces.Public.IOrgActionService)">
+            <summary>
+            
+            </summary>
+            <param name="orgActionService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgActionController.Get(System.Int32)">
+            <summary>
+            获取集团权限
+            </summary>
+            <param name="org_id">集团Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgActionController.Post(Models.View.Public.OrgAction)">
+            <summary>
+            设置集团权限
+            </summary>
+            <param name="item">集团权限</param>
+            <returns>成功/失败</returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.OrgController">
+            <summary>
+            机构--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.#ctor(Service.Repository.Interfaces.Public.IOrgService,Service.Repository.IBaseServer{Models.DB.p_org})">
+            <summary>
+            机构构造函数
+            </summary>
+            <param name="orgService"></param>
+            <param name="baseServer"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.GetPageAsync(Models.View.Public.SearchModel)">
+            <summary>
+            获取机构分页数据
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.GetById(System.Int32)">
+            <summary>
+            根据id获取机构详情    
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.ModifyCheck(Models.DB.p_org)">
+            <summary>
+            机构审核
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.ModifyEnable(Models.View.Public.OrgModel)">
+            <summary>
+            机构启用禁用
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.Modify(Models.DB.p_org)">
+            <summary>
+            编辑机构信息
+            </summary>
+            <param name="entity">机构实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.CardState(Models.View.Public.CardState)">
+            <summary>
+            就诊卡是否可积分、是否存在实体就诊卡
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.GetCardState">
+            <summary>
+            获取就诊卡是否可积分、是否存在实体就诊卡    
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.OrgController.GetOrgIntroduce(System.Int32)">
+            <summary>
+            获取机构简介
+            </summary>
+            <param name="orgId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.PersonController">
+            <summary>
+            人员管理--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.#ctor(Service.Repository.Interfaces.Public.IPersonService)">
+            <summary>
+            人员构造
+            </summary>
+            <param name="personService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.GetPageAsync(Models.View.Public.SearchModel,System.Int32)">
+            <summary>
+            获取人员分页数据
+            </summary>
+            <param name="entity"></param>
+            <param name="status">状态（1=已启用 2=已停用 0=所有）</param>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.GetPersonById(Models.DB.p_employee_role)">
+            <summary>
+            根据Id获取人员信息
+            </summary>
+            <param name="roleEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.Add(Models.View.Public.PersonModel)">
+            <summary>
+            添加人员信息、详情、部门
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.Modify(Models.View.Public.PersonModel)">
+            <summary>
+            编辑人员信息、详情、部门
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.DeleteAsync(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            批量删除人员
+            </summary>
+            <param name="delList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.UseAsync(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            批量启用人员
+            </summary>
+            <param name="useList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.DispatchAsync(Models.View.Public.EmployeeDispatch)">
+            <summary>
+            人员调度
+            </summary>
+            <param name="employeeDispatch">人员调度信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.GetListAsync(System.Int32)">
+            <summary>
+            根据人员ID获取人员门店列表
+            </summary>
+            <param name="id">人员ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.GetEmployeeListAsync(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据门店ID获取人员列表
+            </summary>
+            <param name="name">姓名/拼音/手机号/身份证</param>
+            <param name="natureID">性质ID（默认-1代表所有）</param>
+            <param name="storeID">门店ID（默认-1代表所有）</param>
+            <param name="state">状态（-1=所有，0=已失效，1=正常）</param>
+            <param name="dept_id">部门ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.GetQrCodeAsync(System.Int32,System.String)">
+            <summary>
+            获取人员二维码
+            </summary>
+            <param name="storeID">门店ID</param>
+            <param name="deptTypeCode">部门分类编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.GetDoctorList(System.Int32,System.Int32)">
+            <summary>
+            根据科室获取医生
+            </summary>
+            <param name="deptId"></param>
+            <param name="storeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.GetDoctoIntroduce(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取医生简介
+            </summary>
+            <param name="doctorId"></param>
+            <param name="deptId"></param>
+            <param name="storeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.CollectionDoctor(Models.DB.c_collection)">
+            <summary>
+            收藏医生
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.PersonController.DeleteCollection(Models.DB.c_collection)">
+            <summary>
+            删除收藏
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.RegisterController">
+            <summary>
+            注册
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.RegisterController.#ctor(Service.Repository.Interfaces.Public.IRegisterService)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.RegisterController.Post(Models.View.Public.Register)">
+            <summary>
+            注册
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.RoleActionController">
+            <summary>
+            角色权限
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleActionController.#ctor(Service.Repository.Interfaces.Public.IRoleActionService)">
+            <summary>
+            
+            </summary>
+            <param name="roleActionService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleActionController.Get(System.Int32)">
+            <summary>
+            获取角色权限
+            </summary>
+            <param name="role_id">角色Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleActionController.Post(Models.View.Public.RoleAction)">
+            <summary>
+            设置角色权限
+            </summary>
+            <param name="item">角色权限</param>
+            <returns>成功/失败</returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.RoleController">
+            <summary>
+            角色管理
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleController.#ctor(Service.Repository.Interfaces.Public.IRoleService)">
+            <summary>
+            
+            </summary>
+            <param name="roleService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleController.Add(Models.DB.p_role)">
+            <summary>
+            添加角色
+            </summary>
+            <param name="entity">角色信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleController.Modify(Models.DB.p_role)">
+            <summary>
+            修改角色
+            </summary>
+            <param name="entity">角色信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleController.ModifyDisabled(Models.DB.p_role)">
+            <summary>
+            修改状态（状态（0=停用，1=启用））
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleController.Delete(Models.DB.p_role)">
+            <summary>
+            删除角色
+            </summary>
+            <param name="entity">角色</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleController.GetListAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="deptID">部门ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.RoleController.GetPagesAsync(System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="storeID">门店ID</param>
+            <param name="deptID">部门ID</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.SchedulingTimeController">
+            <summary>
+            排班时间段
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.SchedulingTimeController.#ctor(Service.Repository.Interfaces.Public.ISchedulingTimeService)">
+            <summary>
+            
+            </summary>
+            <param name="schedulingTimeService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.SchedulingTimeController.Get(System.Int32)">
+            <summary>
+            获取排班时间段
+            </summary>
+            <param name="storeId">门店Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SchedulingTimeController.Post(Models.View.Public.SchedulingTimes)">
+            <summary>
+            设置排班时间段
+            </summary>
+            <param name="item">排班时间段</param>
+            <returns>成功/失败</returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.SendSMSController">
+            <summary>
+            短信发送
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.SendSMSController.#ctor(Service.Repository.Interfaces.Public.ISendSMSService)">
+            <summary>
+            
+            </summary>
+            <param name="sendSMSService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.SendSMSController.SendRegister(Models.View.Public.SendSMS)">
+            <summary>
+            发送短信（注册）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SendSMSController.SendLogin(Models.View.Public.SendSMS)">
+            <summary>
+            发送短信（登录确认）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SendSMSController.SendForgetPwd(Models.View.Public.SendSMS)">
+            <summary>
+            发送短信（忘记密码）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SendSMSController.SendSms(Models.View.Public.SendSMSGroup)">
+            <summary>
+            发送短信
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SendSMSController.GetPagesAsync(System.Int32,System.Int32,System.String,System.Int32,System.String,System.Boolean,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="storeId">门店ID</param>
+            <param name="templateId">模板ID</param>
+            <param name="phone">手机号</param>
+            <param name="status">状态（1：成功；0：失败；-1：所有）</param>
+            <param name="content">内容</param>
+            <param name="is_all">是否所有</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.SmsTemplateController">
+            <summary>
+            短信模板
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.SmsTemplateController.#ctor(Service.Repository.Interfaces.Public.ISmsTemplateService)">
+            <summary>
+            
+            </summary>
+            <param name="smsTemplateService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.SmsTemplateController.Add(Models.DB.p_sms_template)">
+            <summary>
+            添加短信模板
+            </summary>
+            <param name="entity">短信模板信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SmsTemplateController.Modify(Models.DB.p_sms_template)">
+            <summary>
+            修改短信模板
+            </summary>
+            <param name="entity">短信模板信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SmsTemplateController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除短信模板
+            </summary>
+            <param name="list">短信模板ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SmsTemplateController.GetListAsync(System.String,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="name">模板名称</param>
+            <param name="isSelect">是否可选（1=可选，0=不可选，-1=所有）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.SmsTemplateController.GetPagesAsync(System.String,System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">模板名称</param>
+            <param name="isSelect">是否可选（1=可选，0=不可选，-1=所有）</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.StoreActionController">
+            <summary>
+            门店权限
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreActionController.#ctor(Service.Repository.Interfaces.Public.IStoreActionService)">
+            <summary>
+            
+            </summary>
+            <param name="storeActionService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreActionController.Get(System.Int32)">
+            <summary>
+            获取门店权限
+            </summary>
+            <param name="store_id">门店Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreActionController.Post(Models.View.Public.StoreAction)">
+            <summary>
+            设置门店权限
+            </summary>
+            <param name="item">角色权限</param>
+            <returns>成功/失败</returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.StoreController">
+            <summary>
+            门店--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.#ctor(Service.Repository.Interfaces.Public.IStoreService)">
+            <summary>
+            门店
+            </summary>
+            <param name="storeServer"></param>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.GetPagesAsync(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取分页列表
+            </summary>
+            <param name="name">名称</param>
+            <param name="order">排序字段</param>
+            <param name="orderType">排序方式(0：升序 1：降序)</param>
+            <param name="limit">单页数据条数</param>
+            <param name="page">查询第几页（第一页为1）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.Add(Models.DB.p_store)">
+            <summary>
+            添加门店
+            </summary>
+            <param name="entity">门店实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.Modify(Models.DB.p_store)">
+            <summary>
+            编辑门店
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.ModifyDisabled(Models.DB.p_store)">
+            <summary>
+            修改状态（状态（0=停用，1=启用））
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.Delete(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除门店
+            </summary>
+            <param name="list">门店ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.GetAsync(System.Int32)">
+            <summary>
+            获取门店信息
+            </summary>
+            <param name="storeID">门店ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.GetListAsync(System.Boolean)">
+            <summary>
+            获取门店列表
+            </summary>
+            <param name="containOrg">是否包含集团</param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.GetStoreList(System.Int32)">
+            <summary>
+            获取客户端门店列表
+            </summary>
+            <param name="orgId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.StoreController.GetStoreIntroduce(System.Int32)">
+            <summary>
+            获取门店简介
+            </summary>
+            <param name="storeId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Public.UpLoadController">
+            <summary>
+            上传
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadAsync">
+            <summary>
+            上传入口（营业执照）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadOrgAsync">
+            <summary>
+            上传入口（集团图片）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadStoreAsync">
+            <summary>
+            上传入口（门店图片）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadDeptAsync">
+            <summary>
+            上传入口（部门图片）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadEmpAsync">
+            <summary>
+            上传入口（人员图片）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadArchivesAsync">
+            <summary>
+            上传入口（客户图片）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadEmp64Async(Models.View.Public.UpLoad)">
+            <summary>
+            上传入口（人员图片）
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadArchives64Async(Models.View.Public.UpLoad)">
+            <summary>
+            上传入口（客户图片）
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadFeedBackAsync">
+            <summary>
+            上传入口（反馈与投诉）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadActivityAsync">
+            <summary>
+            上传入口（活动图片）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Public.UpLoadController.UploadCustomerAsync">
+            <summary>
+            上传入口（客户图片）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Reports.MainHealthController">
+            <summary>
+            医疗板块报表--ty
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Reports.MainHealthController.#ctor(Service.Repository.Interfaces.Reports.IMainHealthService)">
+            <summary>
+            
+            </summary>
+            <param name="mainHealthService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Reports.MainHealthController.GetHealthAsync(Models.View.Reports.DoctorTopSearch)">
+            <summary>
+            获取医疗基本信息
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Reports.MainHealthController.GetTopList(Models.View.Reports.DoctorTopSearch)">
+            <summary>
+            获取医生排名
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ROP.Controllers.Reports.MainPageController">
+            <summary>
+            主页报表
+            </summary>
+        </member>
+        <member name="M:ROP.Controllers.Reports.MainPageController.#ctor(Service.Repository.Interfaces.Reports.IMainPageService)">
+            <summary>
+            
+            </summary>
+            <param name="mainPageService"></param>
+        </member>
+        <member name="M:ROP.Controllers.Reports.MainPageController.GetMainPage(Models.View.Reports.MainPageSearch)">
+            <summary>
+            主页报表
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Reports.MainPageController.GetRecharge(Models.View.Reports.MainPageSearch)">
+            <summary>
+            业绩
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Controllers.Reports.MainPageController.GetTotal(Models.View.Reports.MainPageSearch)">
+            <summary>
+            整体情况
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ROP.Startup.AddAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>  
+            自动注册服务——获取程序集中的实现类对应的多个接口
+            </summary>
+            <param name="services">服务集合</param>  
+            <param name="assemblyName">程序集名称</param>
+        </member>
+    </members>
+</doc>
