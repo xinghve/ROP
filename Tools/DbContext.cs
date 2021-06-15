@@ -133,7 +133,7 @@ namespace Tools
             Db.Insertable(log).RemoveDataCache().ExecuteCommand();
             Console.WriteLine(sql + "\r\n" +
                 Db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
-            Console.WriteLine();
+            Console.WriteLine();  
         }
     }
 }
