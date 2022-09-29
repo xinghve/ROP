@@ -109,7 +109,7 @@ namespace Service.Repository.Implements.Business
                 throw new MessageException("请选择流程!");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询流程信息
                 var process_message = Db.Queryable<p_process>()
@@ -253,7 +253,7 @@ namespace Service.Repository.Implements.Business
         /// <returns></returns>
         private async Task<bool> ModifyCommon(ModifyProcessModel entity, p_process process_message)
         {
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //使用中的流程无法编辑,查询审核记录
                 var modifyProcess = Db.Queryable<r_verify>()
@@ -382,7 +382,7 @@ namespace Service.Repository.Implements.Business
             {
                 throw new MessageException("请输入正确金额!");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询是否有相同流程
                 var sameProcess = Db.Queryable<p_process>()
@@ -576,7 +576,7 @@ namespace Service.Repository.Implements.Business
             processEntity.enable_time = entity.state == 1 ? DateTime.Now : Convert.ToDateTime(" 3000-12-31 23:59:59");
             processEntity.total_level = Convert.ToInt16(entity.detailsList.Count > 0 ? entity.detailsList.Count : 0);
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 entity.leavel_type_List.ForEach(c =>
                 {
@@ -624,7 +624,7 @@ namespace Service.Repository.Implements.Business
         /// <returns></returns>
         public async Task<bool> ModifyLeavel(ModifyProcessModel entity, p_process process_message)
         {
-            var result = await Db.Ado.UseTranAsync(() => {
+            var result = Db.Ado.UseTran(() => {
                 //使用中的流程无法编辑,查询审核记录
                 var modifyProcess = Db.Queryable<r_verify, p_process>((mp, p) => new object[] { JoinType.Left, mp.process_id == p.id })
                                        .Where((mp, p) => mp.org_id == userInfo.org_id && mp.process_type_id == process_message.type_id && mp.state == 33 && mp.process_id == entity.id && p.leave_type_id == process_message.leave_type_id && p.duration == process_message.duration)
@@ -698,7 +698,7 @@ namespace Service.Repository.Implements.Business
         /// <returns></returns>
         public async Task<bool> AddTransferProcess(AddProcessModel entity)
         {
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询是否有相同流程
                 var sameProcess = Db.Queryable<p_process>()
@@ -803,7 +803,7 @@ namespace Service.Repository.Implements.Business
             entity.type_id = 3;
             processEntity.type_id = entity.type_id;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 entity.leavel_type_List.ForEach(c =>
                 {
@@ -892,7 +892,7 @@ namespace Service.Repository.Implements.Business
         /// <returns></returns>
         public async Task<bool> ModifyConsumer(ModifyProcessModel entity, p_process process_message)
         {
-            var result = await Db.Ado.UseTranAsync(() => {
+            var result = Db.Ado.UseTran(() => {
                 //使用中的流程无法编辑,查询审核记录
                 var modifyProcess = Db.Queryable<r_verify, p_process>((mp, p) => new object[] { JoinType.Left, mp.process_id == p.id })
                                        .Where((mp, p) => mp.org_id == userInfo.org_id && mp.process_type_id == process_message.type_id && mp.state == 33 && mp.process_id == entity.id && p.leave_type_id == process_message.leave_type_id )
@@ -982,7 +982,7 @@ namespace Service.Repository.Implements.Business
             entity.type_id = 5;
             processEntity.type_id = entity.type_id;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 processEntity.leave_type_id = 0;
 
@@ -1073,7 +1073,7 @@ namespace Service.Repository.Implements.Business
             entity.type_id = 6;
             processEntity.type_id = entity.type_id;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 processEntity.leave_type_id = 0;
 

@@ -36,7 +36,7 @@ namespace Service.Repository.Implements.Public
 
             //新增
             var code = "";
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 entity.dept.org_id = userInfo.org_id;
                 if (entity.dept.store_id != 0)
@@ -112,7 +112,7 @@ namespace Service.Repository.Implements.Public
                 throw new MessageException("当前部门正在使用中，不能删除");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //删除部门性质
                 Db.Deleteable<p_dept_nature>().Where(w => w.dept_id == id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
@@ -208,7 +208,7 @@ namespace Service.Repository.Implements.Public
                 throw new MessageException("当前集团或门店已存在此部门");
             }
             entity.dept.pinyin = ToSpell.GetFirstPinyin(entity.dept.name);
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //编辑部门
                 Db.Updateable(entity.dept)
@@ -306,7 +306,7 @@ namespace Service.Repository.Implements.Public
 
             //新增
             var code = "";
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 foreach (var item in list)
                 {
@@ -355,7 +355,7 @@ namespace Service.Repository.Implements.Public
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询要移除的人员
                 var list = Db.Queryable<p_employee_role>().Where(w => w.dept_id == entity.dept_id && w.store_id == entity.store_id && w.org_id == userInfo.org_id && w.is_admin == false).WithCache().ToList();

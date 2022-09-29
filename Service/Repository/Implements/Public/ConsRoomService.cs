@@ -37,7 +37,7 @@ namespace Service.Repository.Implements.Public
             {
                 throw new MessageException("当前门店已存在此诊室");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var id = Db.Insertable(consRoom).ExecuteReturnIdentity();
                 redisCache.RemoveAll<p_cons_room>();
@@ -139,7 +139,7 @@ namespace Service.Repository.Implements.Public
             {
                 throw new MessageException("当前门店已存在此诊室");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //修改诊室信息
                 Db.Updateable(consRoom).IgnoreColumns(it => new { it.org_id, it.store_id }).Where(w => w.id == consRoom.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

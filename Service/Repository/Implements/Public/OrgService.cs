@@ -72,7 +72,7 @@ namespace Service.Repository.Implements.Public
                 throw new MessageException("机构id不正确!");
             }
             var t = DateTime.Now.AddDays(int.Parse(ConfigExtensions.Configuration["BaseConfig:ExpireDay"]));
-            var isResult = await Db.Ado.UseTranAsync(() => { 
+            var isResult = Db.Ado.UseTran(() => { 
                     Db.Updateable<p_store>().SetColumns(a => new p_store() { expire_time = t }).Where(a => a.org_id == id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
                     Db.Updateable<p_employee>().SetColumns(a => new p_employee() { expire_time = t }).Where(a => a.org_id == id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
                     var result =  Db.Updateable<p_org>().SetColumns(a => new p_org() { status = 1, expire_time = t }).Where(a => a.id == id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
@@ -93,7 +93,7 @@ namespace Service.Repository.Implements.Public
         /// <returns></returns>
         public async Task<bool> ModifyEnable(OrgModel entity)
         {
-            var isResult = await Db.Ado.UseTranAsync(() => {
+            var isResult = Db.Ado.UseTran(() => {
                 var result = 0;
                 if (entity.state == 0)
                 {
@@ -139,7 +139,7 @@ namespace Service.Repository.Implements.Public
                 throw new MessageException("非管理员不能操作!");
             }
 
-            var isSuccess = await Db.Ado.UseTranAsync(() =>
+            var isSuccess = Db.Ado.UseTran(() =>
             {
                 result = Db.Updateable<p_org>().SetColumns(a => new p_org() { link_man = entity.link_man, phone_no = entity.phone_no, office_address = entity.office_address, introduce = entity.introduce
                 }).Where(a => a.id == entity.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

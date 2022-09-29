@@ -197,7 +197,7 @@ namespace Service.Repository.Implements.His
             var recoverEntity = new his_recover();
             var archivesnotice = new c_archives();
             var reId = 0;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 foreach (var entity in entityCount)
                 {
@@ -391,7 +391,7 @@ namespace Service.Repository.Implements.His
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
             var recoverContent = new his_recover();
             var newrecover = 0;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询康复记录
                 recoverContent = Db.Queryable<his_recover>()
@@ -517,7 +517,7 @@ namespace Service.Repository.Implements.His
                 throw new MessageException("未获取到此预约！");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //修改当前康复预约状态
                 var isSus = Db.Updateable<his_recover>()

@@ -109,7 +109,7 @@ namespace Service.Repository.Implements.His
             {
                 throw new MessageException("请选择目录！");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询该目录下的项目规格
                 var specIdList = Db.Queryable<h_itemdir, h_item,h_itemspec>((dir, item,spec) => new object[] {JoinType.Left, item.dir_id == dir.dirid,JoinType.Left,spec.itemid==item.item_id })
@@ -292,7 +292,7 @@ namespace Service.Repository.Implements.His
             }
 
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //目录
                 var groupby_dir = entity.GroupBy(d => new { d.dir_name, d.dir_type_name }).Select(d => new h_itemdir { name = d.Key.dir_name, type_name = d.Key.dir_type_name }).ToList();

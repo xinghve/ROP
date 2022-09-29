@@ -30,7 +30,7 @@ namespace Service.Repository.Implements.Business
         public async Task<bool> AddAsync(AssetsDepreciation entity)
         {
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 if (entity.assets_Depreciation_Detials.Count == 0)
                 {
@@ -106,7 +106,7 @@ namespace Service.Repository.Implements.Business
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询折旧单
                 var assets_depreciation = Db.Queryable<bus_assets_depreciation>().Where(w => w.no == entity.no).WithCache().First();
@@ -160,7 +160,7 @@ namespace Service.Repository.Implements.Business
             //查询集团下所有资产折旧明细
             var depreciations_detials = await Db.Queryable<bus_assets_depreciation_detials>().Where(w => depreciations_nos.Contains(w.no)).WithCache().ToListAsync();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 stores.ForEach(item =>
                 {
@@ -233,7 +233,7 @@ namespace Service.Repository.Implements.Business
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 if (entity.assets_Depreciation_Detials.Count == 0)
                 {

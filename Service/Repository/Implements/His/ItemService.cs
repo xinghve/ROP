@@ -92,7 +92,7 @@ namespace Service.Repository.Implements.His
             {
                 throw new MessageException("请选择项目!");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询是否存在相同项目
                 var name = Db.Queryable<h_item>().WithCache().Any(w => w.org_id == userInfo.org_id && w.dir_id == entity.dir_id && w.trade_name == entity.trade_name && w.type_id == entity.type_id && w.item_id != entity.item_id);
@@ -229,7 +229,7 @@ namespace Service.Repository.Implements.His
             {
                 throw new MessageException("请选择项目！");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询该项目下的项目规格
                 var specIdList = Db.Queryable<h_item, h_itemspec>((item, spec) => new object[] { JoinType.Left, spec.itemid == item.item_id })

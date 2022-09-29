@@ -133,7 +133,7 @@ namespace Service.Repository.Implements.Public
                 throw new MessageException("此人员手机号已存在，请确认信息是否正确！");
             }
 
-            var result = Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 #region 人员信息
                 var person = new p_employee();
@@ -177,7 +177,7 @@ namespace Service.Repository.Implements.Public
 
                 #endregion
             });
-            return result.Result.IsSuccess;
+            return result.IsSuccess;
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Service.Repository.Implements.Public
                 throw new MessageException("此人员已存在，请确认信息是否正确！");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //if (entity.pdList.Count > 0)
                 //{
@@ -355,7 +355,7 @@ namespace Service.Repository.Implements.Public
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            //var result = await Db.Ado.UseTranAsync(() =>
+            //var result = Db.Ado.UseTran(() =>
             //{
             //    Db.Deleteable<p_employee_role>().Where(w => w.store_id == employeeDispatch.fromStoreID && w.employee_id == employeeDispatch.employeeID).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
             //    var list = employeeDispatch.deptRoles
@@ -371,7 +371,7 @@ namespace Service.Repository.Implements.Public
             //    Db.Insertable(list).ExecuteCommand();
             //    redisCache.RemoveAll<p_employee_role>();
             //});
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var nowRole = new List<p_employee_role>();
                 if (employeeDispatch.fromStoreID > 0)
@@ -546,7 +546,7 @@ namespace Service.Repository.Implements.Public
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 #region 人员信息
 
@@ -742,7 +742,7 @@ namespace Service.Repository.Implements.Public
             }
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询本门店关联角色
                 var roleId = Db.Queryable<p_role>()
@@ -790,7 +790,7 @@ namespace Service.Repository.Implements.Public
             {
                 throw new MessageException("未获取到原角色!");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //删除现角色
                 Db.Deleteable<p_employee_role>()

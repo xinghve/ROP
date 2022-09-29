@@ -31,7 +31,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //所有勾选的采购申请单号
                 var apply_nos = new List<string>();
@@ -213,7 +213,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询采购单
                 var buy_list = Db.Queryable<bus_buy_bill>().Where(w => list.Contains(w.bill_no)).WithCache().ToList();
@@ -302,7 +302,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 Finish(entity.bill_no, 15);
             });

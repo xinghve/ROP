@@ -5,6 +5,8 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data.Common;
+using System.Reflection;
 
 namespace Tools
 {
@@ -41,21 +43,21 @@ namespace Tools
         /// <param name="fileName">文件名称</param>
         /// <param name="key">节点Key</param>
         /// <returns></returns>
-        public static T GetAppSettings<T>(string fileName, string key) where T : class, new()
-        {
-            var baseDir = AppContext.BaseDirectory + "json/";
-            var currentClassDir = baseDir;
+        //public static T GetAppSettings<T>(string fileName, string key) where T : class, new()
+        //{
+        //    var baseDir = AppContext.BaseDirectory + "json/";
+        //    var currentClassDir = baseDir;
 
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(currentClassDir)
-                .Add(new JsonConfigurationSource { Path = fileName, Optional = false, ReloadOnChange = true })
-                .Build();
-            var appconfig = new ServiceCollection().AddOptions()
-                .Configure<T>(config.GetSection(key))
-                .BuildServiceProvider()
-                .GetService<IOptions<T>>()
-                .Value;
-            return appconfig;
-        }
+        //    IConfiguration config = new ConfigurationBuilder()
+        //        .SetBasePath(currentClassDir)
+        //        .Add(new JsonConfigurationSource { Path = fileName, Optional = false, ReloadOnChange = true })
+        //        .Build();
+        //    var appconfig = new ServiceCollection().AddOptions()
+        //        .Configure<T>(config.GetSection(key))
+        //        .BuildServiceProvider()
+        //        .GetService<IOptions<T>>()
+        //        .Value;
+        //    return appconfig;
+        //}
     }
 }

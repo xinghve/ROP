@@ -32,7 +32,7 @@ namespace Service.Repository.Implements.Crm
 
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //获取档案信息
                 var archives = Db.Queryable<c_archives>().Where(w => w.id == maintain.archives_id).WithCache().First();

@@ -230,7 +230,7 @@ namespace Service.Repository.Implements.His
             
             var packList = items.Select((s, index) => new his_applycontent { applyid = entity.applyid, actualamount = 0, content = entity.content, orderid = short.Parse(index.ToString()), specid = s.itemspec.specid, specname = s.itemspec.specname, packid = entity.packid, quantity = s.pre_entity.quantity, price = s.itemspec.sale_price, cost = s.itemspec.buy_price, shouldamount = s.itemspec.sale_price * s.pre_entity.quantity, usageid =entity.type_id==5?-1: s.pre_entity.usageid, usagename = entity.type_id == 5 ? "" : s.pre_entity.usagename, frequecyname = entity.type_id == 5 ? "" : s.pre_entity.frequecyname, frequecyid = entity.type_id == 5 ? -1 : s.pre_entity.frequecyid, sigle = entity.type_id == 5 ? 0 : s.pre_entity.sigle, dosageunit = s.itemspec.dosageunit, execdeptid = userInfo.id, execdept = userInfo.name, execstateid = 0, execstate = "", unitname = s.itemspec.salseunit, modulus = s.itemspec.salsemodulus, groupid =  0, item_id = s.item.item_id, item_name = s.item.trade_name, org_id = userInfo.org_id, store_id = entity.store_id, type_id = entity.type_id }).ToList();
 
-            var result = await Db.Ado.UseTranAsync(() => {
+            var result = Db.Ado.UseTran(() => {
                 //删除之前数据，重新添加
                 var isResult = Db.Deleteable<his_applycontent>()
                   .Where(s => s.packid == entity.packid&&s.org_id==userInfo.org_id&&s.store_id==entity.store_id&&s.type_id==entity.type_id)

@@ -38,7 +38,7 @@ namespace Service.Repository.Implements.Public
             var store_name = await Db.Queryable<p_store>().Where(w => w.id == entity.equipment.store_id).Select(s => s.name).WithCache().FirstAsync();
 
             //新增
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 entity.equipment.org_id = userInfo.org_id;
                 entity.equipment.store_name = store_name;
@@ -110,7 +110,7 @@ namespace Service.Repository.Implements.Public
             }
 
             //新增
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //修改设备
                 Db.Updateable<p_equipment>().SetColumns(s => new p_equipment { manufactor = entity.equipment.manufactor, model = entity.equipment.model, name = entity.equipment.name, manufactor_id = entity.equipment.manufactor_id }).Where(w => w.id == entity.equipment.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

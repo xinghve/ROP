@@ -29,7 +29,7 @@ namespace Service.Repository.Implements.Business
         /// <returns></returns>
         public async Task<bool> AddAsync(PutInStorage entity)
         {
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 PutIn(entity);
             });
@@ -243,7 +243,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //修改入库状态
                 Db.Updateable<bus_put_in_storage>().SetColumns(s => new bus_put_in_storage { state = 7 }).Where(w => w.bill_no == entity.bill_no).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

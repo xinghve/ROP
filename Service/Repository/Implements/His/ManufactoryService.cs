@@ -103,7 +103,7 @@ namespace Service.Repository.Implements.His
             newEntity.bank = entity.bank;
             newEntity.bank_no = entity.bank_no;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var manufactorId = Db.Insertable(newEntity).ExecuteReturnIdentity();
                 redisCache.RemoveAll<h_manufactor>();
@@ -138,7 +138,7 @@ namespace Service.Repository.Implements.His
                 throw new MessageException("请选择供应商！");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询是否存在相同厂家
                 var isExtist = Db.Queryable<h_manufactor>().WithCache().Any(s => s.org_id == userInfo.org_id && s.name == entity.name && s.id != entity.id);
@@ -214,7 +214,7 @@ namespace Service.Repository.Implements.His
             {
                 throw new MessageException("请选择供应商！");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询厂家是否在使用中
                 var isUse = Db.Queryable<h_itemspec>().WithCache().Any(s => s.factoryid == entity.id);

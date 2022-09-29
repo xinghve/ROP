@@ -1,4 +1,5 @@
 ﻿using IdentityModel.Client;
+using IdentityServer4.Models;
 using Models.DB;
 using Models.View.Public;
 using Newtonsoft.Json;
@@ -14,6 +15,7 @@ using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,7 +130,7 @@ namespace Service.Repository.Implements.Public
                 throw new IdentityException("身份验证失败！" + JsonConvert.SerializeObject(tokenResponse));
             }
             //获取令牌中的access_token       
-            var Result = JsonConvert.DeserializeObject<IdentityModel>(tokenResponse.Json.ToString()).access_token;
+            var Result = JsonConvert.DeserializeObject<IdentityModels>(tokenResponse.Json.ToString()).access_token;
 
             if (id > 0)
             {
@@ -178,16 +180,34 @@ namespace Service.Repository.Implements.Public
             IdentityConnection = ConfigExtensions.Configuration["ConnectionStrings:IdentityConnection"];
 
             #region IdentityModel自带请求方式
+
             // 从元数据中发现客户端
             //var disco = DiscoveryClient.GetAsync("http://192.168.20.124:8001/").Result;
 
-            var client = new DiscoveryClient(IdentityConnection);
-            client.Policy.RequireHttps = false;
-            var disco = await client.GetAsync();
+            var client = new HttpClient();
+
+            var disco = await client.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+            {
+                Address = IdentityConnection,
+                Policy =
+                {
+                    RequireHttps = false,
+                    ValidateIssuerName = false
+                }
+            });
+
 
             // 请求令牌
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "ro.client", "secret");
-            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync(username, password);//使用用户名密码
+            var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
+            {
+                Address = disco.TokenEndpoint,
+                ClientId = "ro.client",
+                ClientSecret = "secret",
+                Scope = "api",
+                GrantType = GrantType.ResourceOwnerPassword,
+                Password = password,
+                UserName = username
+            });
 
             return tokenResponse;
             #endregion
@@ -301,7 +321,7 @@ namespace Service.Repository.Implements.Public
         /// <summary>
         /// Identity令牌实体
         /// </summary>
-        public class IdentityModel
+        public class IdentityModels
         {
             /// <summary>
             /// 存取令牌

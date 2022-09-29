@@ -219,7 +219,7 @@ namespace Service.Repository.Implements.OA
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
             //事务创建
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var ret = -1;
                 //删除角色已有权限
@@ -289,7 +289,7 @@ namespace Service.Repository.Implements.OA
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
             entity.org_id = userInfo.org_id;
             string currentDirectory = Path.GetDirectoryName(type.Assembly.Location);
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 if (entity.type != "folder")
                 {

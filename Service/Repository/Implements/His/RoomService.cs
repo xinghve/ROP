@@ -38,7 +38,7 @@ namespace Service.Repository.Implements.His
             var store_name = await Db.Queryable<p_store>().Where(w => w.id == entity.store_id).Select(s => s.name).WithCache().FirstAsync();
 
             //新增
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var room = new p_room { org_id = userInfo.org_id, store_name = store_name, creater = userInfo.name, creater_id = userInfo.id, create_date = DateTime.Now, equipment = entity.equipment, name = entity.name, position = entity.position, state = 30, store_id = entity.store_id, wait_times = entity.wait_times, work_times = entity.work_times };
                 //添加医疗室返回医疗室id
@@ -137,7 +137,7 @@ namespace Service.Repository.Implements.His
 
 
             //新增
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //修改医疗室
                 Db.Updateable<p_room>().SetColumns(s => new p_room { name = entity.name, equipment = entity.equipment, position = entity.position, wait_times = entity.wait_times, work_times = entity.work_times }).Where(w => w.id == entity.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

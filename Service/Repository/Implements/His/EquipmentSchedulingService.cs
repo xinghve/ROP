@@ -38,7 +38,7 @@ namespace Service.Repository.Implements.His
             var notice_content = "";
             var employeeSocket = new List<WebSocketModel>();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //执行康复项目
                 Db.Updateable<his_equipment_scheduling>().SetColumns(s => new his_equipment_scheduling { stateid = 15, summary = entity.summary, work_time_end = DateTime.Now.ToLongTimeString() }).Where(w => w.id == entity.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
@@ -231,7 +231,7 @@ namespace Service.Repository.Implements.His
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //执行康复项目
                 Db.Updateable<his_equipment_scheduling>().SetColumns(s => new his_equipment_scheduling { execute_date = DateTime.Now, stateid = 17, executor = userInfo.name, executor_id = userInfo.id, work_time_start = DateTime.Now.ToLongTimeString() }).Where(w => w.id == entity.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

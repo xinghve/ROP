@@ -59,7 +59,7 @@ namespace Service.Repository.Implements.Public
             {
                 throw new MessageException("此门店名已存在!");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 entity.cert_status = 0;
                 entity.cert_no = "";
@@ -145,7 +145,7 @@ namespace Service.Repository.Implements.Public
             {
                 throw new MessageException("此门店名已存在!");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var org = Db.Queryable<p_org>().Where(w => w.id == userInfo.org_id).WithCache().First();
                 Db.Updateable<p_store>()

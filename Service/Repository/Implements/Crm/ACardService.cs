@@ -79,7 +79,7 @@ namespace Service.Repository.Implements.Crm
         {
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
              {
                  //查询会员信息
                  var cardDetail = Db.Queryable<c_archives, c_account>((a, ac) => new object[] { JoinType.Left, a.id == ac.archives_id }).Where((a, ac) => a.id == model.archives_id && a.org_id == userInfo.org_id && a.state == 1).Select((a, ac) => new { a.id, ac.balance, ac.coupon, ac.integral, ac.recharge, ac.rate, ac.total_coupon, ac.total_integral, a.grade_id, a.to_director_id, a.to_director, ac.amount, ac.consume, ac.noneamount, ac.password, ac.salseamount, ac.settleamount }).WithCache().First();

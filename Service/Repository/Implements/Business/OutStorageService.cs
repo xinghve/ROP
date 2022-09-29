@@ -31,7 +31,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //修改出库状态
                 Db.Updateable<bus_out_storage>().SetColumns(s => new bus_out_storage { state = 7 }).Where(w => w.bill_no == entity.bill_no).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

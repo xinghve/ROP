@@ -119,7 +119,7 @@ namespace Service.Repository.Implements.Business
         {
             var applyEntity = new bus_buy_apply();
             applyEntity.apply_no = "CGSQ" + DateTime.Now.ToString("yyMMdd");
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询最大单号
                 var max_no = Db.Queryable<bus_buy_apply>().Where(w => w.apply_no.StartsWith(applyEntity.apply_no)).OrderBy(o => o.apply_no, OrderByType.Desc).Select(s => s.apply_no).WithCache().First();
@@ -346,7 +346,7 @@ namespace Service.Repository.Implements.Business
                 throw new MessageException("此单据无法编辑!");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //编辑申请单
                 Db.Updateable<bus_buy_apply>().SetColumns(a => new bus_buy_apply { remark = entity.remark })
@@ -390,7 +390,7 @@ namespace Service.Repository.Implements.Business
                 throw new MessageException("请选择采购单!");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var applyEntity = Db.Queryable<bus_buy_apply>().Where(w => w.apply_no == entity.apply_no).WithCache().First();
                 //设置审核信息
@@ -445,7 +445,7 @@ namespace Service.Repository.Implements.Business
             {
                 throw new MessageException("此单据无法作废!");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
 
                 Db.Updateable<bus_buy_apply>().SetColumns(a => new bus_buy_apply { state = 32 })
@@ -609,7 +609,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var bill = Db.Queryable<bus_buy_apply>().Where(w => w.apply_no == entity.apply_no).WithCache().First();
                 if (bill == null)

@@ -165,7 +165,7 @@ namespace Service.Repository.Implements.His
             }
 
             //新增结账单
-            var result =await Db.Ado.UseTranAsync(()=> {
+            var result =Db.Ado.UseTran(()=> {
                 
                 checkoutEntity.orgid = userInfo.org_id;
                 checkoutEntity.store_id = entity.storeId;

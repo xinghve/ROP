@@ -176,7 +176,7 @@ namespace Service.Repository.Implements.Public
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询要移除的人员
                 var list = Db.Queryable<p_employee_role>().Where(w => w.role_id == entity.role_id && w.store_id == entity.store_id && w.org_id == userInfo.org_id && w.is_admin == false).WithCache().ToList();

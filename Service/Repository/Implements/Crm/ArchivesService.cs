@@ -50,7 +50,7 @@ namespace Service.Repository.Implements.Crm
                 }
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 #region 档案信息
                 //var info = Utils.GetInfoFromIDCard(c_archives.id_card);
@@ -336,7 +336,7 @@ namespace Service.Repository.Implements.Crm
                 }
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 #region 档案信息
                 var info = Utils.GetInfoFromIDCard(c_archives.id_card);
@@ -849,7 +849,7 @@ namespace Service.Repository.Implements.Crm
                 throw new MessageException("身份证号已存在，请确认信息是否正确");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 #region 档案信息
                 //var info = Utils.GetInfoFromIDCard(c_archives.id_card);
@@ -963,7 +963,7 @@ namespace Service.Repository.Implements.Crm
                 throw new MessageException("身份证号已存在，请确认信息是否正确");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 #region 档案信息
                 var info = Utils.GetInfoFromIDCard(c_archives.id_card);
@@ -1239,7 +1239,7 @@ namespace Service.Repository.Implements.Crm
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
             var num = 1;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //获取最低等级
                 var level = Db.Queryable<c_archives_level>().Where(w => w.org_id == userInfo.org_id && w.special == 3).OrderBy(o => o.min_money).WithCache().First();

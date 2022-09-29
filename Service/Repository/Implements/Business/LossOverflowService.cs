@@ -32,7 +32,7 @@ namespace Service.Repository.Implements.Business
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询盘点单
                 var stocktaking = Db.Queryable<bus_stocktaking>().Where(w => w.no == entity.realted_no).WithCache().First();
@@ -265,7 +265,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var loss_overflow = Db.Queryable<bus_loss_overflow>().Where(w => w.no == entity.no).WithCache().First();
                 if (loss_overflow.creater_id != userInfo.id)

@@ -45,7 +45,7 @@ namespace Service.Repository.Implements.Public
             {
                 throw new MessageException("已存在此物资基础信息");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //新增
                 var id = Db.Insertable(new p_std_item { code = entity.code, name = entity.name, org_id = userInfo.org_id, spell = ToSpell.GetFirstPinyin(entity.name), state = 1, type = entity.type, type_id = entity.type_id, min_num = entity.min_num, unit = entity.unit }).ExecuteReturnIdentity();
@@ -190,7 +190,7 @@ namespace Service.Repository.Implements.Public
             }
             entity.spell = ToSpell.GetFirstPinyin(entity.name);
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //修改基础项目
                 Db.Updateable<p_std_item>().SetColumns(it => new p_std_item { code = entity.code, name = entity.name, spell = entity.spell, type = entity.type, type_id = entity.type_id, min_num = entity.min_num, unit = entity.unit }).Where(w => w.id == entity.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();

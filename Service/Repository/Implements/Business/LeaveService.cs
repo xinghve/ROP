@@ -158,7 +158,7 @@ namespace Service.Repository.Implements.Business
 
             if (entity.leave_process_list.Count>0)
             {
-                var result = await Db.Ado.UseTranAsync(() =>
+                var result = Db.Ado.UseTran(() =>
                 {
                     //查询所有流程
                     var processList = Db.Queryable<p_process>()
@@ -268,7 +268,7 @@ namespace Service.Repository.Implements.Business
                 newEntity.leave_no = "QJSQ" + userinfo.id + DateTime.Now.ToString("yyyyMMddHHmmss");
                 newEntity.state = 34;
 
-                var result = await Db.Ado.UseTranAsync(() => {
+                var result = Db.Ado.UseTran(() => {
                     //设置图片
                       if (entity.leaveImg.Count>0)
                         {

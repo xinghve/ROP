@@ -8,7 +8,6 @@ using ROP.Controllers.CustomMessage;
 using Senparc.CO2NET;
 using Senparc.CO2NET.RegisterServices;
 using Senparc.Weixin;
-using Senparc.Weixin.Cache.Redis;
 using Senparc.Weixin.Entities;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.RegisterServices;
@@ -23,6 +22,14 @@ using System.Reflection;
 using System.Text;
 using Tools.Filter;
 using Tools.WebSocket;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using static IdentityModel.ClaimComparer;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
+using Senparc.Weixin.Cache.CsRedis;
+using Tools;
+using Microsoft.OpenApi.Models;
 
 namespace ROP
 {
@@ -38,6 +45,9 @@ namespace ROP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            RedisHelper.Initialization(new CSRedis.CSRedisClient(ConfigExtensions.Configuration.GetSection("ConnectionStrings:RedisConnection").Value));
+
             //配置identityServer授权
             services.AddAuthentication("Bearer")
                 .AddIdentityServerAuthentication(options =>
@@ -52,10 +62,10 @@ namespace ROP
             {
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter)); // by type
             })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            .AddJsonOptions(opt =>
+            .AddJsonOptions(options =>
             {
-                opt.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();//json数据大小写问题
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;//PascalCase
+                options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);  //防止中文出现乱码
             });
 
             services.AddScoped(typeof(IBaseServer<>), typeof(BaseServer<>));
@@ -64,13 +74,12 @@ namespace ROP
 
             services.AddSwaggerGen(options =>
             {
-                options.DescribeAllEnumsAsStrings();
-                options.SwaggerDoc("v1", new Info
+                //options.DescribeAllEnumsAsStrings();
+                options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
                     Title = "ROP API",
-                    Description = "数字化康复运营平台 HTTP API.",
-                    TermsOfService = "Terms Of Service"
+                    Description = "数字化康复运营平台 HTTP API."
                 });
 
                 var filePath = Path.Combine(AppContext.BaseDirectory, "ROP.xml");
@@ -114,7 +123,6 @@ namespace ROP
             app.UseMiddleware<ChatWebSocketMiddleware>();
 
             app.UseHttpsRedirection();
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);//这是为了防止中文乱码
 
             ////添加NLog  
             //loggerFactory.AddNLog();
@@ -138,7 +146,7 @@ namespace ROP
             });
 
             // 启动 CO2NET 全局注册，必须！
-            IRegisterService register = RegisterService.Start(env, senparcSetting.Value).UseSenparcGlobal();
+            IRegisterService register = RegisterService.Start(senparcSetting.Value).UseSenparcGlobal();
 
             #region CO2NET 全局配置
 
@@ -158,10 +166,10 @@ namespace ROP
                  * 1、Redis 的连接字符串信息会从 Config.SenparcSetting.Cache_Redis_Configuration 自动获取并注册，如不需要修改，下方方法可以忽略
                 /* 2、如需手动修改，可以通过下方 SetConfigurationOption 方法手动设置 Redis 链接信息（仅修改配置，不立即启用）
                  */
-                Senparc.CO2NET.Cache.Redis.Register.SetConfigurationOption(redisConfigurationStr);
+                Senparc.CO2NET.Cache.CsRedis.Register.SetConfigurationOption(redisConfigurationStr);
 
                 //以下会立即将全局缓存设置为 Redis
-                Senparc.CO2NET.Cache.Redis.Register.UseKeyValueRedisNow();//键值对缓存策略（推荐）
+                Senparc.CO2NET.Cache.CsRedis.Register.UseKeyValueRedisNow();//键值对缓存策略（推荐）
                 //Senparc.CO2NET.Cache.Redis.Register.UseHashRedisNow();//HashSet储存格式的缓存策略
 
                 //也可以通过以下方式自定义当前需要启用的缓存策略
@@ -194,39 +202,43 @@ namespace ROP
 
             //注册开始
 
-            #region 微信缓存（按需，必须在 register.UseSenparcWeixin() 之前）
-
-            //微信的 Redis 缓存，如果不使用则注释掉（开启前必须保证配置有效，否则会抛错）         -- DPBMARK Redis
-            if (useRedis)
-            {
-                app.UseSenparcWeixinCacheRedis();
-            }                                                                                        // DPBMARK_END
-
-
-            #endregion
 
 
             //开始注册微信信息，必须！
-            register.UseSenparcWeixin(senparcWeixinSetting.Value, senparcSetting.Value)
-                //注意：上一行没有 ; 下面可接着写 .RegisterXX()
+            register.UseSenparcWeixin(senparcWeixinSetting.Value, (weixinRegister, weixinSetting) => {
 
-            #region 注册公众号或小程序（按需）
+                #region 微信缓存
+
+                //微信的 Redis 缓存，如果不使用则注释掉（开启前必须保证配置有效，否则会抛错）         -- DPBMARK Redis
+                if (useRedis)
+                {
+                    weixinRegister.UseSenparcWeixinCacheCsRedis();
+                }                                                                                        // DPBMARK_END
+
+                #endregion
+
+                #region 注册公众号或小程序（按需）
 
                 //注册公众号（可注册多个）                                                -- DPBMARK MP
-                .RegisterMpAccount(senparcWeixinSetting.Value, "scyykj")// DPBMARK_END
-                                
+                weixinRegister.RegisterMpAccount(senparcWeixinSetting.Value, "scyykj");// DPBMARK_END
+
                 //除此以外，仍然可以在程序任意地方注册公众号或小程序：
                 //AccessTokenContainer.Register(appId, appSecret, name);//命名空间：Senparc.Weixin.MP.Containers
-            #endregion
+                #endregion
 
 
-            #region 注册微信支付（按需）        -- DPBMARK TenPay
-                
+                #region 注册微信支付（按需）        -- DPBMARK TenPay
+
                 //注册最新微信支付版本（V3）（可注册多个）
-                .RegisterTenpayV3(senparcWeixinSetting.Value, "scyykj")//记录到同一个 SenparcWeixinSettingItem 对象中
+                weixinRegister.RegisterTenpayV3(senparcWeixinSetting.Value, "scyykj");//记录到同一个 SenparcWeixinSettingItem 对象中
 
-            #endregion                          // DPBMARK_END
+                #endregion                          // DPBMARK_END
             ;
+
+            });
+                //注意：上一行没有 ; 下面可接着写 .RegisterXX()
+
+            
 
             /* 微信配置结束 */
 

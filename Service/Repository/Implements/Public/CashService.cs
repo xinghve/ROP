@@ -31,7 +31,7 @@ namespace Service.Repository.Implements.Public
         {
             //获分销人员信息
             var distributorInfo = new Tools.IdentityModels.GetDistributor().Distributor;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //添加提现记录
                 entity.cash_withdrawal_date = DateTime.Now;

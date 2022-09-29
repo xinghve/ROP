@@ -29,7 +29,7 @@ namespace Service.Repository.Implements.Business
         /// <returns></returns>
         public async Task<bool> AddAsync(r_assets_scrap entity)
         {
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //获取用户信息
                 var userInfo = new Tools.IdentityModels.GetUser().userInfo;

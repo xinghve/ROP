@@ -12,6 +12,8 @@ using System.Threading;
 using ROP.Controllers.CustomMessage;
 using Senparc.CO2NET.HttpUtility;
 using Senparc.NeuChar.MessageHandlers;
+using Senparc.Weixin.AspNet.MvcExtension;
+using Senparc.CO2NET.AspNet.HttpUtility;
 
 namespace ROP.Controllers.Public
 {

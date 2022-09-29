@@ -246,7 +246,7 @@ namespace Service.Repository.Implements.His
             var notice_content = "";
             var employeeSocket = new List<WebSocketModel>();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //门诊
                 if (entity.type_id == 1)
@@ -384,7 +384,7 @@ namespace Service.Repository.Implements.His
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
             var clinic_id = 0;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //获取挂号及档案信息
                 var register_archives = Db.Queryable<his_register, c_archives>((r, a) => new object[] { JoinType.Left, r.centerid == a.id }).Where((r, a) => r.regid == entity.regid).Select((r, a) => new { register = r, archives = a }).WithCache().First();
@@ -492,7 +492,7 @@ namespace Service.Repository.Implements.His
             var notice_content = "";
             var employeeSocket = new List<WebSocketModel>();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //获取档案当前就诊信息
                 var clinicrecord = Db.Queryable<his_clinicrecord>().Where(w => w.clinicid == entity.clinicid).WithCache().First();
@@ -933,7 +933,7 @@ namespace Service.Repository.Implements.His
             var notice_content = "";
             var employeeSocket = new List<WebSocketModel>();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询就诊记录
                 var clinicrecord = Db.Queryable<his_clinicrecord>().Where(w => w.clinicid == clinic_id).WithCache().First();

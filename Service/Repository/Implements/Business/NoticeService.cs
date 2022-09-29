@@ -72,7 +72,7 @@ namespace Service.Repository.Implements.Business
                 return true;
             }
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() => {
+            var result = Db.Ado.UseTran(() => {
 
                 //新增通知
                 entity.ForEach(c => {

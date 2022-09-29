@@ -52,7 +52,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var bill = new bus_transfer_bill();
                 bill.bill_no = "DB" + DateTime.Now.ToString("yyMMdd");
@@ -410,7 +410,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var bill = Db.Queryable<bus_transfer_bill>().Where(w => w.bill_no == entity.bill_no).WithCache().First();
                 var stateList = new List<short> { 26, 34, 36 };
@@ -683,7 +683,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var bill = Db.Queryable<bus_transfer_bill>().Where(w => w.bill_no == entity.bill_no).WithCache().First();
 
@@ -730,7 +730,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var bill = Db.Queryable<bus_transfer_bill>().Where(w => w.bill_no == entity.bill_no).WithCache().First();
 
@@ -852,7 +852,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 if (entity.out_store_id == 0)
                 {
@@ -926,7 +926,7 @@ namespace Service.Repository.Implements.Business
             //查询用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var bill = Db.Queryable<bus_transfer_bill>().Where(w => w.bill_no == entity.bill_no).WithCache().First();
                 if (bill.creater_id != userInfo.id)

@@ -43,7 +43,7 @@ namespace Service.Repository.Implements.His
             var notice_content = "";
             var employeeSocket = new List<WebSocketModel>();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询档案账户
                 var account_al = Db.Queryable<c_account, c_archives, c_archives_level>((a, ac, al) => new object[] { JoinType.Left, a.archives_id == ac.id, JoinType.Left, ac.grade_id == al.id }).Where((a, ac, al) => a.archives_id == entity.archives_id).Select((a, ac, al) => new { account = a, archives = ac, level = al }).WithCache().First();

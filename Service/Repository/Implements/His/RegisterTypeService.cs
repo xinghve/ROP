@@ -39,7 +39,7 @@ namespace Service.Repository.Implements.His
             //{
 
             //}
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var registertype = new his_registertype { amount = entity.amount, orderflag = entity.orderflag, typename = entity.typename, typeid = entity.typeid, orgid = userInfo.org_id, stateid = entity.stateid };
                 //添加类别
@@ -159,7 +159,7 @@ namespace Service.Repository.Implements.His
                 throw new MessageException("使用中的号别不能禁用！");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var registertype = new his_registertype { amount = entity.amount, orderflag = entity.orderflag, typename = entity.typename, typeid = entity.typeid, stateid = entity.stateid };
                 //修改类别

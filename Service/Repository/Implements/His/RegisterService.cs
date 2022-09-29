@@ -84,7 +84,7 @@ namespace Service.Repository.Implements.His
 
             var register = new his_register();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 register = RegisterCommon(entity, userInfo, scheduletimes, regdatestr, account, archives, level);
             });
@@ -673,7 +673,7 @@ namespace Service.Repository.Implements.His
 
         public async Task<bool> ModifyDateAsync(ModifyDateModel entity)
         {
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 ModifyDate(entity);
             });

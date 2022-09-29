@@ -39,7 +39,7 @@ namespace Service.Repository.Implements.OA
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
             var employee_ids = new List<int>();
             var oa_meeting = new oa_meeting();
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //添加会议基础信息
                 oa_meeting = new oa_meeting { address = entity.address, content = entity.content, convenor = entity.convenor, convenor_id = entity.convenor_id, creater = userInfo.name, creater_id = userInfo.id, create_time = DateTime.Now, data = entity.data, dept_id = entity.dept_id, dept_name = entity.dept_name, host = entity.host, host_id = entity.host_id, issue = entity.issue, no = $"HY{DateTime.Now.ToString("yyyyMMddHHmmssffffff")}", org_id = userInfo.org_id, remark = entity.remark, start_date = entity.start_date, start_time = entity.start_time, state = 37, store = entity.store, store_id = entity.store_id, theme = entity.theme, times = entity.times, type = entity.type, type_id = entity.type_id, note_taker = entity.note_taker, note_taker_id = entity.note_taker_id };
@@ -283,7 +283,7 @@ namespace Service.Repository.Implements.OA
             entity.employee = userInfo.name;
             entity.employee_id = userInfo.id;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var ret = -1;
                 //删除已有会议记录
@@ -309,7 +309,7 @@ namespace Service.Repository.Implements.OA
         /// <returns></returns>
         public async Task<bool> SaveResolutionAsync(ResolutionList entity)
         {
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var ret = -1;
                 //删除已有决议
@@ -337,7 +337,7 @@ namespace Service.Repository.Implements.OA
         /// <returns></returns>
         public async Task<bool> SaveSpeakAsync(SpeakList entity)
         {
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var ret = -1;
                 //删除已有发言

@@ -40,7 +40,7 @@ namespace Service.Repository.Implements.Business
             entity.bill.state = 26;
             entity.bill.bill_no=entity.bill.is_dept==2? "LYSQ"+entity.bill.dept_id + userinfo.id + DateTime.Now.ToString("yyyyMMddHHmmssff") : "LYSQ" + userinfo.id + DateTime.Now.ToString("yyyyMMddHHmmssff");
 
-            var result = await Db.Ado.UseTranAsync(() => {
+            var result = Db.Ado.UseTran(() => {
                 //根据分类属性获取审核流程(1.固资2.低耗)
                 var process =Db.Queryable<p_process>()
                                 .Where(p => p.state == 1 && p.type_id == 3 && p.org_id == userinfo.org_id && p.leave_type_id == entity.bill.type_id)
@@ -447,7 +447,7 @@ namespace Service.Repository.Implements.Business
             }
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
 
                 //查询所属分类
@@ -949,7 +949,7 @@ namespace Service.Repository.Implements.Business
             }
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() => {
+            var result = Db.Ado.UseTran(() => {
                 //查询单据
                 var detail = Db.Queryable<bus_grant_detail>()
                                .Where(b => b.bill_no == entity.bill_no && b.std_item_id == entity.std_item_id && b.spec == entity.spec && b.manufactor_id == entity.manufactor_id && b.no == entity.no)

@@ -51,12 +51,12 @@ namespace Service.Repository.Implements.Business
 
             }
             //通过包含
-            var passList = new List<short?> { 34, 39, 33, 25,15 };
+            var passList = new List<short?> { 34, 39, 33, 25, 15 };
             //撤销包含
-            var cancelList = new List<short?> { 35,32,7 };
+            var cancelList = new List<short?> { 35, 32, 7 };
             Page<ApprovalModel> leaveList = new Page<ApprovalModel>();
             //26为待审核
-            if (entity.state==26)
+            if (entity.state == 26)
             {
                 leaveList = await GetOwnVerify(entity, userinfo, orderTypeStr, start, end, roleList, passList, cancelList);
             }
@@ -64,7 +64,7 @@ namespace Service.Repository.Implements.Business
             {
                 leaveList = await GetOwnSet(entity, userinfo, orderTypeStr, start, end, roleList, passList, cancelList);
             }
-           
+
 
             return leaveList;
 
@@ -81,34 +81,34 @@ namespace Service.Repository.Implements.Business
         /// <param name="roleList"></param>
         /// <param name="passList"></param>
         /// <returns></returns>
-        private async Task<Page<ApprovalModel>> GetOwnVerify(ApprovalSearchModel entity, Tools.IdentityModels.GetUser.UserInfo userinfo, string orderTypeStr, DateTime start, DateTime end, List<int> roleList, List<short?> passList,List<short?> cancelList)
+        private async Task<Page<ApprovalModel>> GetOwnVerify(ApprovalSearchModel entity, Tools.IdentityModels.GetUser.UserInfo userinfo, string orderTypeStr, DateTime start, DateTime end, List<int> roleList, List<short?> passList, List<short?> cancelList)
         {
-           
+
             //查询信息
             return await Db.UnionAll(
                                   Db.Queryable<oa_leave, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.applicant_id == p.id, JoinType.Left, o.org_process_id == pro.id })
-                                  .Where((o, p, pro) => o.org_id == userinfo.org_id &&( o.await_verifier_id == userinfo.id || roleList.Contains(o.role_id)) &&( o.state == 36 || o.state == 26))
+                                  .Where((o, p, pro) => o.org_id == userinfo.org_id && (o.await_verifier_id == userinfo.id || roleList.Contains(o.role_id)) && (o.state == 36 || o.state == 26))
                                   .WhereIF(entity.store_id > 0, (o, p, pro) => o.is_org == false && o.store_id > 0)
                                   .WhereIF(entity.store_id == 0, (o, p, pro) => o.is_org == true)
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.applicant_id, role_id = o.role_id, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.leave_no, apply_time = o.apply_time, state = o.state.Value, type = "请假", type_id = 4, phone = p.phone_no, leave_type_id = o.leave_type_id, duration = o.duration, process_name = pro.name, store = " " })
                                   .WithCache()
                                   ,
                                   Db.Queryable<bus_buy_apply, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.applicant_id == p.id, JoinType.Left, o.org_process_id == pro.id })
-                                  .Where((o, p, pro) =>  o.org_id == userinfo.org_id &&( o.await_verifier_id == userinfo.id || roleList.Contains(o.await_verifier_id.Value)) && (o.state == 36 || o.state == 26)&&o.delete_no==null)
+                                  .Where((o, p, pro) => o.org_id == userinfo.org_id && (o.await_verifier_id == userinfo.id || roleList.Contains(o.await_verifier_id.Value)) && (o.state == 36 || o.state == 26) && o.delete_no == null)
                                   .WhereIF(entity.store_id > 0, (o, p, pro) => o.is_org == false && o.store_id > 0)
                                   .WhereIF(entity.store_id == 0, (o, p, pro) => o.is_org == true)
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.applicant_id.Value, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.apply_no, apply_time = o.apply_time.Value, state = o.state.Value, type = "采购申请", type_id = 1, phone = p.phone_no, leave_type_id = 0, duration = o.total_price.Value, process_name = pro.name, store = o.store })
                                   .WithCache()
                                   ,
                                    Db.Queryable<bus_transfer_bill, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.creater_id == p.id, JoinType.Left, o.process_id == pro.id })
-                                  .Where((o, p, pro) =>  o.org_id == userinfo.org_id &&( o.await_verifier_id == userinfo.id || roleList.Contains(o.await_verifier_id.Value)) && (o.state == 36 || o.state == 26) && o.delete_no == null)
+                                  .Where((o, p, pro) => o.org_id == userinfo.org_id && (o.await_verifier_id == userinfo.id || roleList.Contains(o.await_verifier_id.Value)) && (o.state == 36 || o.state == 26) && o.delete_no == null)
                                   .WhereIF(entity.store_id > 0, (o, p, pro) => o.is_org == false && o.out_store_id > 0)
                                   .WhereIF(entity.store_id == 0, (o, p, pro) => o.is_org == true)
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.creater_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.bill_no, apply_time = o.create_time, state = o.state, type = "调拨申请", type_id = 2, phone = p.phone_no, leave_type_id = 0, duration = 0, process_name = pro.name, store = o.in_store_name })
                                   .WithCache()
                                   ,
                                     Db.Queryable<bus_requisitions_bill, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.creater_id == p.id, JoinType.Left, o.process_id == pro.id })
-                                  .Where((o, p, pro) => o.org_id == userinfo.org_id && (o.await_verifier_id == userinfo.id || roleList.Contains(o.await_verifier_id.Value)) && (o.state == 36 || o.state == 26) )
+                                  .Where((o, p, pro) => o.org_id == userinfo.org_id && (o.await_verifier_id == userinfo.id || roleList.Contains(o.await_verifier_id.Value)) && (o.state == 36 || o.state == 26))
                                   .WhereIF(entity.store_id > 0, (o, p, pro) => o.is_org == false && o.store_id > 0)
                                   .WhereIF(entity.store_id == 0, (o, p, pro) => o.is_org == true)
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.creater_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.bill_no, apply_time = o.create_time, state = o.state, type = "领用申请", type_id = 3, phone = p.phone_no, leave_type_id = o.type_id, duration = 0, process_name = pro.name, store = o.store_name })
@@ -129,7 +129,7 @@ namespace Service.Repository.Implements.Business
                                   .WithCache()
 
                                   )
-                                 .Where(s => SqlFunc.Between(s.apply_time, start, end)&& (s.await_verifier_id == userinfo.id || roleList.Contains(s.role_id)))
+                                 .Where(s => SqlFunc.Between(s.apply_time, start, end) && (s.await_verifier_id == userinfo.id || roleList.Contains(s.role_id)))
                                  .WhereIF(entity.type_id > 0, s => s.type_id == entity.type_id)
                                  .WhereIF(!string.IsNullOrEmpty(entity.name), s => s.apply_name.Contains(entity.name) || s.apply_no.Contains(entity.name))
                                  .OrderBy(entity.order + orderTypeStr)
@@ -161,23 +161,23 @@ namespace Service.Repository.Implements.Business
                                   ,
                                   Db.Queryable<bus_buy_apply, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.applicant_id == p.id, JoinType.Left, o.org_process_id == pro.id })
                                   .Where((o, p, pro) => o.applicant_id == userinfo.id && o.org_id == userinfo.org_id && o.delete_no == null)
-                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34&&entity.own_state!=35, (o, p, pro) => o.state == entity.own_state)
+                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34 && entity.own_state != 35, (o, p, pro) => o.state == entity.own_state)
                                   .WhereIF(entity.own_state > 0 && entity.own_state == 34, (o, p, pro) => passList.Contains(o.state))
                                   .WhereIF(entity.own_state > 0 && entity.own_state == 35, (o, p, pro) => cancelList.Contains(o.state))
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.applicant_id.Value, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.apply_no, apply_time = o.apply_time.Value, state = o.state.Value, type = "采购申请", type_id = 1, phone = p.phone_no, leave_type_id = 0, duration = o.total_price.Value, process_name = pro.name, store = o.store })
                                   .WithCache()
                                   ,
                                    Db.Queryable<bus_transfer_bill, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.creater_id == p.id, JoinType.Left, o.process_id == pro.id })
-                                  .Where((o, p, pro) => o.creater_id == userinfo.id&&o.state!=30 && o.org_id == userinfo.org_id && o.delete_no == null)
-                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34&&entity.own_state!=35, (o, p, pro) => o.state == entity.own_state)
+                                  .Where((o, p, pro) => o.creater_id == userinfo.id && o.state != 30 && o.org_id == userinfo.org_id && o.delete_no == null)
+                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34 && entity.own_state != 35, (o, p, pro) => o.state == entity.own_state)
                                   .WhereIF(entity.own_state > 0 && entity.own_state == 34, (o, p, pro) => passList.Contains(o.state))
                                    .WhereIF(entity.own_state > 0 && entity.own_state == 35, (o, p, pro) => cancelList.Contains(o.state))
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.creater_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.bill_no, apply_time = o.create_time, state = o.state, type = "调拨申请", type_id = 2, phone = p.phone_no, leave_type_id = 0, duration = 0, process_name = pro.name, store = o.in_store_name })
                                   .WithCache()
                                   ,
                                   Db.Queryable<bus_requisitions_bill, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.creater_id == p.id, JoinType.Left, o.process_id == pro.id })
-                                  .Where((o, p, pro) => o.creater_id == userinfo.id && o.org_id == userinfo.org_id )
-                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34&&entity.own_state!=35, (o, p, pro) => o.state == entity.own_state)
+                                  .Where((o, p, pro) => o.creater_id == userinfo.id && o.org_id == userinfo.org_id)
+                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34 && entity.own_state != 35, (o, p, pro) => o.state == entity.own_state)
                                   .WhereIF(entity.own_state > 0 && entity.own_state == 34, (o, p, pro) => passList.Contains(o.state))
                                    .WhereIF(entity.own_state > 0 && entity.own_state == 35, (o, p, pro) => cancelList.Contains(o.state))
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.creater_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.bill_no, apply_time = o.create_time, state = o.state, type = "领用申请", type_id = 3, phone = p.phone_no, leave_type_id = o.type_id, duration = 0, process_name = pro.name, store = o.store_name })
@@ -185,7 +185,7 @@ namespace Service.Repository.Implements.Business
                                    ,
                                   Db.Queryable<r_assets_scrap, p_employee, p_process>((o, p, pro) => new object[] { JoinType.Left, o.applicant_id == p.id, JoinType.Left, o.process_id == pro.id })
                                   .Where((o, p, pro) => o.applicant_id == userinfo.id && o.org_id == userinfo.org_id)
-                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34&&entity.own_state!=35, (o, p, pro) => o.state == entity.own_state)
+                                  .WhereIF(entity.own_state > 0 && entity.own_state != 34 && entity.own_state != 35, (o, p, pro) => o.state == entity.own_state)
                                   .WhereIF(entity.own_state > 0 && entity.own_state == 34, (o, p, pro) => passList.Contains(o.state))
                                    .WhereIF(entity.own_state > 0 && entity.own_state == 35, (o, p, pro) => cancelList.Contains(o.state))
                                   .Select((o, p, pro) => new ApprovalModel { apply_id = o.applicant_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.no, apply_time = o.apply_time, state = o.state.Value, type = "报废申请", type_id = 5, phone = p.phone_no, leave_type_id = o.type_id, duration = 0, process_name = pro.name, store = o.store })
@@ -232,7 +232,7 @@ namespace Service.Repository.Implements.Business
 
             roleList = await Db.Queryable<p_employee_role, p_dept, p_role>((er, d, r) => new object[] { JoinType.Left, er.dept_id == d.id, JoinType.Left, er.role_id == r.id }).Where((er, d, r) => er.org_id == userinfo.org_id && er.employee_id == userinfo.id && r.id != 0).Select((er, d, r) => r.id).WithCache().ToListAsync();
 
-            var passList = new List<short?> { 34, 39, 33, 25,15 };
+            var passList = new List<short?> { 34, 39, 33, 25, 15 };
 
             var cancelList = new List<short?> { 35, 32, 7 };
             //查询信息
@@ -245,15 +245,15 @@ namespace Service.Repository.Implements.Business
                                   ,
                                   Db.Queryable<r_verify_detials, bus_buy_apply, p_employee>((v, o, p) => new object[] { JoinType.Left, v.realted_no == o.apply_no, JoinType.Left, o.applicant_id == p.id })
                                   .Where((v, o, p) => v.verifier_id == userinfo.id && o.org_id == userinfo.org_id)
-                                  .WhereIF(entity.state > 0 && entity.state != 34&&entity.state!=35, (v, o, p) => o.state == entity.state)
+                                  .WhereIF(entity.state > 0 && entity.state != 34 && entity.state != 35, (v, o, p) => o.state == entity.state)
                                    .WhereIF(entity.state == 34, (v, o, p) => passList.Contains(o.state))
                                    .WhereIF(entity.state == 35, (v, o, p) => cancelList.Contains(o.state))
-                                  .Select((v, o, p) => new ApprovalModel { duration=o.total_price.Value, store = o.store, phone = p.phone_no, apply_id = o.applicant_id.Value, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.apply_no, apply_time = o.apply_time.Value, state = o.state.Value, type = "采购申请", type_id = 1 })
+                                  .Select((v, o, p) => new ApprovalModel { duration = o.total_price.Value, store = o.store, phone = p.phone_no, apply_id = o.applicant_id.Value, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.apply_no, apply_time = o.apply_time.Value, state = o.state.Value, type = "采购申请", type_id = 1 })
                                   .WithCache()
                                   ,
                                   Db.Queryable<r_verify_detials, bus_transfer_bill, p_employee>((v, o, p) => new object[] { JoinType.Left, v.realted_no == o.bill_no, JoinType.Left, o.creater_id == p.id })
                                   .Where((v, o, p) => v.verifier_id == userinfo.id && o.org_id == userinfo.org_id)
-                                  .WhereIF(entity.state > 0 && entity.state != 34&&entity.state!=35, (v, o, p) => o.state == entity.state)
+                                  .WhereIF(entity.state > 0 && entity.state != 34 && entity.state != 35, (v, o, p) => o.state == entity.state)
                                    .WhereIF(entity.state == 34, (v, o, p) => passList.Contains(o.state))
                                    .WhereIF(entity.state == 34, (v, o, p) => cancelList.Contains(o.state))
                                   .Select((v, o, p) => new ApprovalModel { store = o.in_store_name, phone = p.phone_no, apply_id = o.creater_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.bill_no, apply_time = o.create_time, state = o.state, type = "调拨申请", type_id = 2 })
@@ -261,18 +261,18 @@ namespace Service.Repository.Implements.Business
                                   ,
                                   Db.Queryable<r_verify_detials, bus_requisitions_bill, p_employee>((v, o, p) => new object[] { JoinType.Left, v.realted_no == o.bill_no, JoinType.Left, o.creater_id == p.id })
                                   .Where((v, o, p) => v.verifier_id == userinfo.id && o.org_id == userinfo.org_id)
-                                  .WhereIF(entity.state > 0 && entity.state != 34&&entity.state!=35, (v, o, p) => o.state == entity.state)
+                                  .WhereIF(entity.state > 0 && entity.state != 34 && entity.state != 35, (v, o, p) => o.state == entity.state)
                                    .WhereIF(entity.state == 34, (v, o, p) => passList.Contains(o.state))
                                    .WhereIF(entity.state == 34, (v, o, p) => cancelList.Contains(o.state))
-                                  .Select((v, o, p) => new ApprovalModel { store=o.store_name, phone = p.phone_no, apply_id = o.creater_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.bill_no, apply_time = o.create_time, state = o.state, type = "领用申请", type_id = 3 })
+                                  .Select((v, o, p) => new ApprovalModel { store = o.store_name, phone = p.phone_no, apply_id = o.creater_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.bill_no, apply_time = o.create_time, state = o.state, type = "领用申请", type_id = 3 })
                                   .WithCache()
                                    ,
                                   Db.Queryable<r_verify_detials, r_assets_scrap, p_employee>((v, o, p) => new object[] { JoinType.Left, v.realted_no == o.no, JoinType.Left, o.applicant_id == p.id })
                                   .Where((v, o, p) => v.verifier_id == userinfo.id && o.org_id == userinfo.org_id)
-                                  .WhereIF(entity.state > 0 && entity.state != 34&&entity.state!=35, (v, o, p) => o.state == entity.state)
+                                  .WhereIF(entity.state > 0 && entity.state != 34 && entity.state != 35, (v, o, p) => o.state == entity.state)
                                    .WhereIF(entity.state == 34, (v, o, p) => passList.Contains(o.state))
                                    .WhereIF(entity.state == 34, (v, o, p) => cancelList.Contains(o.state))
-                                  .Select((v, o, p) => new ApprovalModel { store=o.store, phone = p.phone_no, apply_id = o.applicant_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.no, apply_time = o.apply_time, state = o.state.Value, type = "报废申请", type_id = 5 })
+                                  .Select((v, o, p) => new ApprovalModel { store = o.store, phone = p.phone_no, apply_id = o.applicant_id, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.applicant, apply_no = o.no, apply_time = o.apply_time, state = o.state.Value, type = "报废申请", type_id = 5 })
                                   .WithCache()
                                     ,
                                   Db.Queryable<r_verify_detials, bus_loss_overflow, p_employee>((v, o, p) => new object[] { JoinType.Left, v.realted_no == o.no, JoinType.Left, o.creater_id == p.id })
@@ -280,7 +280,7 @@ namespace Service.Repository.Implements.Business
                                   .WhereIF(entity.state > 0 && entity.state != 34 && entity.state != 35, (v, o, p) => o.state == entity.state)
                                    .WhereIF(entity.state == 34, (v, o, p) => passList.Contains(o.state))
                                    .WhereIF(entity.state == 34, (v, o, p) => cancelList.Contains(o.state))
-                                  .Select((v, o, p) => new ApprovalModel {  store=o.store_name, phone = p.phone_no, apply_id = o.creater_id.Value, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.no, apply_time = o.create_time.Value, state = o.state.Value, type = "报损报溢申请", type_id = 6 })
+                                  .Select((v, o, p) => new ApprovalModel { store = o.store_name, phone = p.phone_no, apply_id = o.creater_id.Value, role_id = o.await_verifier_id.Value, await_verifier_id = o.await_verifier_id.Value, apply_name = o.creater, apply_no = o.no, apply_time = o.create_time.Value, state = o.state.Value, type = "报损报溢申请", type_id = 6 })
                                   .WithCache()
 
                                   )
@@ -429,59 +429,59 @@ namespace Service.Repository.Implements.Business
         /// <returns></returns>
         private NewProcessModel NewProcess(ApprovalLeaveModel entity, Tools.IdentityModels.GetUser.UserInfo userinfo, CommonModel processmodel, short currentlevel, process_currentMesModel process_currentMes, List<int> newroleList, r_verify newVerify, r_verify_detials newVerifyDetail, ref p_process_detials processMes)
         {
-                var level = currentlevel;
-                //查询下一审核者
-                if (processmodel.level < processmodel.total_level)
-                {                   
-                    //下一等级
-                    level = Convert.ToInt16(currentlevel + 1);
-                    //当前下一审核者角色
-                    var newprocessMes = Db.Queryable<p_process_detials>()
-                                               .Where(p => p.id == processmodel.org_process_id && p.level > currentlevel)
-                                               .WithCache()
-                                               .ToList();
+            var level = currentlevel;
+            //查询下一审核者
+            if (processmodel.level < processmodel.total_level)
+            {
+                //下一等级
+                level = Convert.ToInt16(currentlevel + 1);
+                //当前下一审核者角色
+                var newprocessMes = Db.Queryable<p_process_detials>()
+                                           .Where(p => p.id == processmodel.org_process_id && p.level > currentlevel)
+                                           .WithCache()
+                                           .ToList();
 
-                    foreach (var item in newprocessMes)
+                foreach (var item in newprocessMes)
+                {
+                    if (item.is_org == false)
                     {
-                        if (item.is_org == false)
+                        processMes = newprocessMes.Where(s => s.id == item.id && s.level == level && newroleList.Contains(s.role_id)).FirstOrDefault();
+                        if (processMes != null)
                         {
-                            processMes = newprocessMes.Where(s => s.id == item.id && s.level == level && newroleList.Contains(s.role_id)).FirstOrDefault();
-                            if (processMes != null)
+                            break;
+                        }
+                        else
+                        {
+                            //添加审核记录                               
+                            SetVerify(entity, process_currentMes, userinfo, item.level, processmodel, 2, processMes);
+
+                            if (level >= processmodel.total_level)
                             {
-                                break;
+                                entity.approval_state = 34;
                             }
                             else
                             {
-                                //添加审核记录                               
-                                SetVerify(entity, process_currentMes, userinfo, item.level, processmodel,2, processMes);
-
-                                if (level >= processmodel.total_level)
-                                {
-                                    entity.approval_state = 34;
-                                }
-                                else
-                                {
-                                    level += 1;
-                                    currentlevel += 1;
-                                    continue;
-
-                                }
+                                level += 1;
+                                currentlevel += 1;
+                                continue;
 
                             }
 
                         }
-                        else if (item.is_org == true)
-                        {
-                            processMes = newprocessMes.Where(s => s.id == item.id && s.level == level).FirstOrDefault();
-                        }
 
                     }
+                    else if (item.is_org == true)
+                    {
+                        processMes = newprocessMes.Where(s => s.id == item.id && s.level == level).FirstOrDefault();
+                    }
+
                 }
-                else if (processmodel.level == processmodel.total_level || (processMes == null && level == processmodel.total_level))
-                {
-                    entity.approval_state = 34;
-                }
-                                          
+            }
+            else if (processmodel.level == processmodel.total_level || (processMes == null && level == processmodel.total_level))
+            {
+                entity.approval_state = 34;
+            }
+
 
             return new NewProcessModel { p_Process_Detials = processMes, processleave = Convert.ToInt16(level) };
         }
@@ -496,7 +496,7 @@ namespace Service.Repository.Implements.Business
         /// <param name="model"></param>
         /// <param name="isJump"></param>
         /// <param name="processDetail"></param>
-        public void SetVerify(ApprovalLeaveModel entity, process_currentMesModel process_currentMes, Tools.IdentityModels.GetUser.UserInfo userinfo, int currentlevel, CommonModel model,int isJump, p_process_detials processDetail)
+        public void SetVerify(ApprovalLeaveModel entity, process_currentMesModel process_currentMes, Tools.IdentityModels.GetUser.UserInfo userinfo, int currentlevel, CommonModel model, int isJump, p_process_detials processDetail)
         {
             r_verify newVerify = new r_verify();
             r_verify_detials newVerifyDetail = new r_verify_detials();
@@ -507,14 +507,14 @@ namespace Service.Repository.Implements.Business
                             .WithCache()
                             .First();
             var plevel = isJump == 2 ? model.level : currentlevel;
-            var state = Convert.ToInt16(entity.approval_state == 28 ? 28:(entity.approval_state != 28 && processDetail?.id <=0 && plevel >= model.total_level) ? 34 : 33);
+            var state = Convert.ToInt16(entity.approval_state == 28 ? 28 : (entity.approval_state != 28 && processDetail?.id <= 0 && plevel >= model.total_level) ? 34 : 33);
             if (verifyMes == null)
             {
                 //添加审核表
                 newVerify.realted_no = entity.apply_no;
                 newVerify.total_level = model.total_level;
                 newVerify.level = Convert.ToInt16(model.level);
-                newVerify.state =state ;
+                newVerify.state = state;
                 newVerify.process_type_id = model.process_type_id;
                 newVerify.process_type = model.process_type;
                 newVerify.org_id = userinfo.org_id;
@@ -529,8 +529,8 @@ namespace Service.Repository.Implements.Business
             }
             else
             {
-                var r_level = Convert.ToInt16(entity.approval_state==28?currentlevel:model.level);            
-                
+                var r_level = Convert.ToInt16(entity.approval_state == 28 ? currentlevel : model.level);
+
                 Db.Updateable<r_verify>()
                   .SetColumns(rr => new r_verify { level = r_level, state = state })
                   .Where(rr => rr.realted_no == entity.apply_no)
@@ -550,12 +550,12 @@ namespace Service.Repository.Implements.Business
             newVerifyDetail.process_total_level = model.total_level;
             newVerifyDetail.process_level = Convert.ToInt16(currentlevel);
             newVerifyDetail.state = Convert.ToInt16(entity.approval_state == 28 ? 28 : 29);
-            newVerifyDetail.verifier_id = isJump==2?0: userinfo.id;
-            newVerifyDetail.verifier = isJump == 2 ?" ": userinfo.name;
+            newVerifyDetail.verifier_id = isJump == 2 ? 0 : userinfo.id;
+            newVerifyDetail.verifier = isJump == 2 ? " " : userinfo.name;
             newVerifyDetail.verify_time = DateTime.Now;
-            newVerifyDetail.verify_remark = isJump == 2 ?" 跳过审核": entity.verify_remark;
-            newVerifyDetail.role_id = isJump == 2 ?0: process_currentMes.role_id;
-            newVerifyDetail.role_name = isJump == 2 ?" ": process_currentMes.role_name;
+            newVerifyDetail.verify_remark = isJump == 2 ? " 跳过审核" : entity.verify_remark;
+            newVerifyDetail.role_id = isJump == 2 ? 0 : process_currentMes.role_id;
+            newVerifyDetail.role_name = isJump == 2 ? " " : process_currentMes.role_name;
             newVerifyDetail.dept_id = process_currentMes.dept_id;
             newVerifyDetail.dept_name = process_currentMes.dept_name;
             newVerifyDetail.employee_id = model.applicant_id;
@@ -577,7 +577,7 @@ namespace Service.Repository.Implements.Business
         {
             if (store_id > 0)
             {
-                newroleList =  Db.Queryable<p_role>()
+                newroleList = Db.Queryable<p_role>()
                                  .Where(s => s.org_id == userinfo.org_id && s.store_id == store_id && s.disabled_code == 1)
                                  .Select(s => s.link_id.Value)
                                  .WithCache()
@@ -585,7 +585,7 @@ namespace Service.Repository.Implements.Business
             }
             else
             {
-                newroleList =  Db.Queryable<p_role>()
+                newroleList = Db.Queryable<p_role>()
                                 .Where(s => s.org_id == userinfo.org_id && s.store_id == store_id && s.disabled_code == 1)
                                 .Select(s => s.id)
                                 .WithCache()
@@ -605,11 +605,11 @@ namespace Service.Repository.Implements.Business
         /// <param name="is_org"></param>
         /// <param name="roleList"></param>
         /// <returns></returns>
-        private  List<int> GetRole(ApprovalLeaveModel entity, Tools.IdentityModels.GetUser.UserInfo userinfo, int role_id, int await_verifier_id, bool is_org, List<int> roleList)
+        private List<int> GetRole(ApprovalLeaveModel entity, Tools.IdentityModels.GetUser.UserInfo userinfo, int role_id, int await_verifier_id, bool is_org, List<int> roleList)
         {
             if (entity.store_id > 0 || is_org == false)
             {
-                roleList =  Db.Queryable<p_employee_role, p_dept, p_role>((er, d, r) => new object[] { JoinType.Left, er.dept_id == d.id, JoinType.Left, er.role_id == r.id }).Where((er, d, r) => er.org_id == userinfo.org_id && er.employee_id == userinfo.id && r.link_id > 0).Select((er, d, r) => r.link_id.Value).WithCache().ToList();
+                roleList = Db.Queryable<p_employee_role, p_dept, p_role>((er, d, r) => new object[] { JoinType.Left, er.dept_id == d.id, JoinType.Left, er.role_id == r.id }).Where((er, d, r) => er.org_id == userinfo.org_id && er.employee_id == userinfo.id && r.link_id > 0).Select((er, d, r) => r.link_id.Value).WithCache().ToList();
 
                 if (await_verifier_id != userinfo.id && !roleList.Contains(role_id) || entity.store_id <= 0)
                 {
@@ -618,7 +618,7 @@ namespace Service.Repository.Implements.Business
             }
             else
             {
-                roleList =  Db.Queryable<p_employee_role, p_dept, p_role>((er, d, r) => new object[] { JoinType.Left, er.dept_id == d.id, JoinType.Left, er.role_id == r.id }).Where((er, d, r) => er.org_id == userinfo.org_id && er.employee_id == userinfo.id && r.id != 0).Select((er, d, r) => r.id).WithCache().ToList();
+                roleList = Db.Queryable<p_employee_role, p_dept, p_role>((er, d, r) => new object[] { JoinType.Left, er.dept_id == d.id, JoinType.Left, er.role_id == r.id }).Where((er, d, r) => er.org_id == userinfo.org_id && er.employee_id == userinfo.id && r.id != 0).Select((er, d, r) => r.id).WithCache().ToList();
 
                 if (await_verifier_id != userinfo.id && !roleList.Contains(role_id))
                 {
@@ -651,53 +651,53 @@ namespace Service.Repository.Implements.Business
             var employeeSocket = new List<WebSocketModel>();
 
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询单子可不可以审核，有没有权限
-             var oaList = Db.Queryable<oa_leave>()
-                               .Where(o => o.leave_no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
-                               .WithCache()
-                               .First();
-
-
-            if (oaList == null)
-            {
-                throw new MessageException("未查询到符合条件的请假单!");
-            }
-
-            //查询申请人电话
-            var apply_phone = Db.Queryable<p_employee>()
-                                .Where(ss => ss.id == oaList.applicant_id)
-                                .Select(ss => ss.phone_no)
-                                .WithCache()
-                                .First();
-
-            //查询当前登录人是否机构人员 则所属部门关联角色
-            var roleList = new List<int>();
-            int role_id = oaList.role_id;
-            int await_verifier_ids = oaList.await_verifier_id.Value;
-            bool is_org = oaList.is_org.Value;
-            roleList =  GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
-
-            //查询当前审核人信息
-            var currentlevel = oaList.level;
-            var process_currentMes =  Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
-                                  .Where((p, pr) => p.id == oaList.org_process_id && p.level == currentlevel)
-                                  .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
+                var oaList = Db.Queryable<oa_leave>()
+                                  .Where(o => o.leave_no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
                                   .WithCache()
                                   .First();
 
-            if (process_currentMes == null)
-            {
-                throw new MessageException("未获取到当前审核流程信息");
-            }
 
-            var storeroleList = new List<int>();
-            //查询当前门店所有角色
-            int store_id = entity.store_id;
-            storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+                if (oaList == null)
+                {
+                    throw new MessageException("未查询到符合条件的请假单!");
+                }
 
-           
+                //查询申请人电话
+                var apply_phone = Db.Queryable<p_employee>()
+                                    .Where(ss => ss.id == oaList.applicant_id)
+                                    .Select(ss => ss.phone_no)
+                                    .WithCache()
+                                    .First();
+
+                //查询当前登录人是否机构人员 则所属部门关联角色
+                var roleList = new List<int>();
+                int role_id = oaList.role_id;
+                int await_verifier_ids = oaList.await_verifier_id.Value;
+                bool is_org = oaList.is_org.Value;
+                roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
+
+                //查询当前审核人信息
+                var currentlevel = oaList.level;
+                var process_currentMes = Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
+                                      .Where((p, pr) => p.id == oaList.org_process_id && p.level == currentlevel)
+                                      .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
+                                      .WithCache()
+                                      .First();
+
+                if (process_currentMes == null)
+                {
+                    throw new MessageException("未获取到当前审核流程信息");
+                }
+
+                var storeroleList = new List<int>();
+                //查询当前门店所有角色
+                int store_id = entity.store_id;
+                storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+
+
                 var newVerify = new r_verify();//审核表
                 var newVerifyDetail = new r_verify_detials();//审核详情表
                 var new_leave = new oa_leave();//请假表
@@ -733,7 +733,7 @@ namespace Service.Repository.Implements.Business
                 var newprocess_detail = new NewProcessModel();
                 if (entity.approval_state == 34)
                 {
-                     newprocess_detail = NewProcess(entity, userinfo, processmodel, currentlevel, process_currentMes, storeroleList, newVerify, newVerifyDetail, ref processMes);
+                    newprocess_detail = NewProcess(entity, userinfo, processmodel, currentlevel, process_currentMes, storeroleList, newVerify, newVerifyDetail, ref processMes);
 
                     processMes = newprocess_detail?.p_Process_Detials;
                     new_leave.level = newprocess_detail.processleave;
@@ -852,7 +852,7 @@ namespace Service.Repository.Implements.Business
                 model.process_type = "请假";
 
 
-                SetVerify(entity, process_currentMes, userinfo, currentlevel, model,3, processMes);
+                SetVerify(entity, process_currentMes, userinfo, currentlevel, model, 3, processMes);
                 if (noticeList.Count > 0)
                 {
                     //新增
@@ -890,52 +890,52 @@ namespace Service.Repository.Implements.Business
             var employeeSocket = new List<WebSocketModel>();
 
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询单子可不可以审核，有没有权限
-                var oaList =  Db.Queryable<bus_buy_apply>()
-                               .Where(o => o.apply_no == entity.apply_no && o.org_id == userinfo.org_id &&( o.state ==26 || o.state ==36))
+                var oaList = Db.Queryable<bus_buy_apply>()
+                               .Where(o => o.apply_no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
                                .WithCache()
                                .First();
-            if (oaList == null)
-            {
-                throw new MessageException("未查询到符合条件的采购单!");
-            }
-            //查询申请人电话
-            var apply_phone = Db.Queryable<p_employee>()
-                                .Where(ss => ss.id == oaList.applicant_id)
-                                .Select(ss => ss.phone_no)
-                                .WithCache()
-                                .First();
+                if (oaList == null)
+                {
+                    throw new MessageException("未查询到符合条件的采购单!");
+                }
+                //查询申请人电话
+                var apply_phone = Db.Queryable<p_employee>()
+                                    .Where(ss => ss.id == oaList.applicant_id)
+                                    .Select(ss => ss.phone_no)
+                                    .WithCache()
+                                    .First();
 
-            //查询当前登录人不是机构人员 则所属部门关联角色
-            var roleList = new List<int>();
-            int role_id = oaList.await_verifier_id.Value;
-            int await_verifier_ids = oaList.await_verifier_id.Value;
-            bool is_org = oaList.is_org.Value;
-            roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
-
-
-            //查询当前审核人信息
-            var currentlevel = oaList.level;
-            var process_currentMes =Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
-                                  .Where((p, pr) => p.id == oaList.org_process_id && p.level == currentlevel)
-                                  .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
-                                  .WithCache()
-                                  .First();
-
-            if (process_currentMes == null)
-            {
-                throw new MessageException("未获取到当前审核流程信息");
-            }
-
-            var storeroleList = new List<int>();
-            //查询当前门店所有角色
-            int store_id = entity.store_id;
-            storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+                //查询当前登录人不是机构人员 则所属部门关联角色
+                var roleList = new List<int>();
+                int role_id = oaList.await_verifier_id.Value;
+                int await_verifier_ids = oaList.await_verifier_id.Value;
+                bool is_org = oaList.is_org.Value;
+                roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
 
 
-           
+                //查询当前审核人信息
+                var currentlevel = oaList.level;
+                var process_currentMes = Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
+                                      .Where((p, pr) => p.id == oaList.org_process_id && p.level == currentlevel)
+                                      .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
+                                      .WithCache()
+                                      .First();
+
+                if (process_currentMes == null)
+                {
+                    throw new MessageException("未获取到当前审核流程信息");
+                }
+
+                var storeroleList = new List<int>();
+                //查询当前门店所有角色
+                int store_id = entity.store_id;
+                storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+
+
+
                 var newVerify = new r_verify();//审核表
                 var newVerifyDetail = new r_verify_detials();//审核详情表
                 var new_leave = new bus_buy_apply();//采购表
@@ -970,7 +970,7 @@ namespace Service.Repository.Implements.Business
                 if (entity.approval_state == 34)
                 {
 
-                     newprocess_detail = NewProcess(entity, userinfo, processmodel, currentlevel, process_currentMes, storeroleList, newVerify, newVerifyDetail, ref processMes);
+                    newprocess_detail = NewProcess(entity, userinfo, processmodel, currentlevel, process_currentMes, storeroleList, newVerify, newVerifyDetail, ref processMes);
 
                     processMes = newprocess_detail?.p_Process_Detials;
                     new_leave.level = newprocess_detail.processleave;
@@ -1067,7 +1067,7 @@ namespace Service.Repository.Implements.Business
 
                 //修改采购表
                 Db.Updateable(new_leave)
-                  .SetColumns(s => new bus_buy_apply { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org, verify_remark=entity.verify_remark })
+                  .SetColumns(s => new bus_buy_apply { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org, verify_remark = entity.verify_remark })
                   .Where(s => s.apply_no == entity.apply_no)
                   .RemoveDataCache()
                   .EnableDiffLogEvent()
@@ -1085,7 +1085,7 @@ namespace Service.Repository.Implements.Business
                 model.process_type = "采购";
 
 
-                SetVerify(entity, process_currentMes, userinfo, currentlevel, model,3, processMes);
+                SetVerify(entity, process_currentMes, userinfo, currentlevel, model, 3, processMes);
                 if (noticeList.Count > 0)
                 {
                     //新增
@@ -1123,52 +1123,52 @@ namespace Service.Repository.Implements.Business
             var employeeSocket = new List<WebSocketModel>();
 
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询单子可不可以审核，有没有权限
-                var oaList =  Db.Queryable<bus_transfer_bill>()
+                var oaList = Db.Queryable<bus_transfer_bill>()
                                .Where(o => o.bill_no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
                                .WithCache()
                                .First();
-            if (oaList == null)
-            {
-                throw new MessageException("未查询到符合条件的调拨单!");
-            }
-            //查询申请人电话
-            var apply_phone = Db.Queryable<p_employee>()
-                                .Where(ss => ss.id == oaList.creater_id)
-                                .Select(ss => ss.phone_no)
-                                .WithCache()
-                                .First();
+                if (oaList == null)
+                {
+                    throw new MessageException("未查询到符合条件的调拨单!");
+                }
+                //查询申请人电话
+                var apply_phone = Db.Queryable<p_employee>()
+                                    .Where(ss => ss.id == oaList.creater_id)
+                                    .Select(ss => ss.phone_no)
+                                    .WithCache()
+                                    .First();
 
-            //查询当前登录人不是机构人员 则所属部门关联角色
-            var roleList = new List<int>();
-            int role_id = oaList.await_verifier_id.Value;
-            int await_verifier_ids = oaList.await_verifier_id.Value;
-            bool is_org = oaList.is_org.Value;
-            roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
-
-
-            //查询当前审核人信息
-            var currentlevel = oaList.level;
-            var process_currentMes =  Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
-                                  .Where((p, pr) => p.id == oaList.process_id && p.level == currentlevel)
-                                  .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
-                                  .WithCache()
-                                  .First();
-
-            if (process_currentMes == null)
-            {
-                throw new MessageException("未获取到当前审核流程信息");
-            }
-
-            var storeroleList = new List<int>();
-            //查询当前门店所有角色
-            int store_id = entity.store_id;
-            storeroleList =  GetNewRole(userinfo, store_id, storeroleList);
+                //查询当前登录人不是机构人员 则所属部门关联角色
+                var roleList = new List<int>();
+                int role_id = oaList.await_verifier_id.Value;
+                int await_verifier_ids = oaList.await_verifier_id.Value;
+                bool is_org = oaList.is_org.Value;
+                roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
 
 
-           
+                //查询当前审核人信息
+                var currentlevel = oaList.level;
+                var process_currentMes = Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
+                                      .Where((p, pr) => p.id == oaList.process_id && p.level == currentlevel)
+                                      .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
+                                      .WithCache()
+                                      .First();
+
+                if (process_currentMes == null)
+                {
+                    throw new MessageException("未获取到当前审核流程信息");
+                }
+
+                var storeroleList = new List<int>();
+                //查询当前门店所有角色
+                int store_id = entity.store_id;
+                storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+
+
+
                 var newVerify = new r_verify();//审核表
                 var newVerifyDetail = new r_verify_detials();//审核详情表
                 var new_leave = new bus_transfer_bill();//调拨表
@@ -1203,7 +1203,7 @@ namespace Service.Repository.Implements.Business
                 if (entity.approval_state == 34)
                 {
 
-                     newprocess_detail = NewProcess(entity, userinfo, processmodel, currentlevel, process_currentMes, storeroleList, newVerify, newVerifyDetail, ref processMes);
+                    newprocess_detail = NewProcess(entity, userinfo, processmodel, currentlevel, process_currentMes, storeroleList, newVerify, newVerifyDetail, ref processMes);
 
                     processMes = newprocess_detail?.p_Process_Detials;
                     new_leave.level = newprocess_detail.processleave;
@@ -1254,7 +1254,7 @@ namespace Service.Repository.Implements.Business
                         notice.NewMethod(oaList.apply_no, archives, oaList.in_store_id, notice, noticeList, 3, 5, notice_content, oaList.creater, employeenotice);
 
                     }
-                                       
+
                 }
                 else
                 {
@@ -1299,7 +1299,7 @@ namespace Service.Repository.Implements.Business
 
                 //修改调拨表
                 Db.Updateable(new_leave)
-                  .SetColumns(s => new bus_transfer_bill { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org, verify_remark=entity.verify_remark })
+                  .SetColumns(s => new bus_transfer_bill { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org, verify_remark = entity.verify_remark })
                   .Where(s => s.bill_no == entity.apply_no)
                   .RemoveDataCache()
                   .EnableDiffLogEvent()
@@ -1317,7 +1317,7 @@ namespace Service.Repository.Implements.Business
                 model.process_type = "调拨";
 
 
-                SetVerify(entity, process_currentMes, userinfo, currentlevel, model,3, processMes);
+                SetVerify(entity, process_currentMes, userinfo, currentlevel, model, 3, processMes);
                 if (noticeList.Count > 0)
                 {
                     //新增
@@ -1336,7 +1336,7 @@ namespace Service.Repository.Implements.Business
 
         }
 
-        
+
         private void BackTransfer(Tools.IdentityModels.GetUser.UserInfo userinfo, bus_transfer_bill oaList)
         {
             var bill = Db.Queryable<bus_transfer_bill>().Where(w => w.bill_no == oaList.bill_no).WithCache().First();
@@ -1402,52 +1402,52 @@ namespace Service.Repository.Implements.Business
             var employeeSocket = new List<WebSocketModel>();
 
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询单子可不可以审核，有没有权限
-             var oaList =  Db.Queryable<bus_requisitions_bill>()
-                               .Where(o => o.bill_no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
-                               .WithCache()
-                               .First();
-            if (oaList == null)
-            {
-                throw new MessageException("未查询到符合条件的调拨单!");
-            }
-            //查询申请人电话
-            var apply_phone = Db.Queryable<p_employee>()
-                                .Where(ss => ss.id == oaList.creater_id)
-                                .Select(ss => ss.phone_no)
-                                .WithCache()
-                                .First();
-
-            //查询当前登录人不是机构人员 则所属部门关联角色
-            var roleList = new List<int>();
-            int role_id = oaList.await_verifier_id.Value;
-            int await_verifier_ids = oaList.await_verifier_id.Value;
-            bool is_org = oaList.is_org.Value;
-            roleList =  GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
-
-
-            //查询当前审核人信息
-            var currentlevel = oaList.level;
-            var process_currentMes =Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
-                                  .Where((p, pr) => p.id == oaList.process_id && p.level == currentlevel)
-                                  .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
+                var oaList = Db.Queryable<bus_requisitions_bill>()
+                                  .Where(o => o.bill_no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
                                   .WithCache()
                                   .First();
+                if (oaList == null)
+                {
+                    throw new MessageException("未查询到符合条件的调拨单!");
+                }
+                //查询申请人电话
+                var apply_phone = Db.Queryable<p_employee>()
+                                    .Where(ss => ss.id == oaList.creater_id)
+                                    .Select(ss => ss.phone_no)
+                                    .WithCache()
+                                    .First();
 
-            if (process_currentMes == null)
-            {
-                throw new MessageException("未获取到当前审核流程信息");
-            }
-
-            var storeroleList = new List<int>();
-            //查询当前门店所有角色
-            int store_id = entity.store_id;
-            storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+                //查询当前登录人不是机构人员 则所属部门关联角色
+                var roleList = new List<int>();
+                int role_id = oaList.await_verifier_id.Value;
+                int await_verifier_ids = oaList.await_verifier_id.Value;
+                bool is_org = oaList.is_org.Value;
+                roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
 
 
-           
+                //查询当前审核人信息
+                var currentlevel = oaList.level;
+                var process_currentMes = Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
+                                      .Where((p, pr) => p.id == oaList.process_id && p.level == currentlevel)
+                                      .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
+                                      .WithCache()
+                                      .First();
+
+                if (process_currentMes == null)
+                {
+                    throw new MessageException("未获取到当前审核流程信息");
+                }
+
+                var storeroleList = new List<int>();
+                //查询当前门店所有角色
+                int store_id = entity.store_id;
+                storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+
+
+
                 var newVerify = new r_verify();//审核表
                 var newVerifyDetail = new r_verify_detials();//审核详情表
                 var new_leave = new bus_requisitions_bill();//调拨表
@@ -1575,7 +1575,7 @@ namespace Service.Repository.Implements.Business
 
                 //修改领用表
                 Db.Updateable(new_leave)
-                  .SetColumns(s => new bus_requisitions_bill { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org,verify_remark=entity.verify_remark })
+                  .SetColumns(s => new bus_requisitions_bill { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org, verify_remark = entity.verify_remark })
                   .Where(s => s.bill_no == entity.apply_no)
                   .RemoveDataCache()
                   .EnableDiffLogEvent()
@@ -1631,52 +1631,52 @@ namespace Service.Repository.Implements.Business
             var employeeSocket = new List<WebSocketModel>();
 
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询单子可不可以审核，有没有权限
-            var oaList =Db.Queryable<r_assets_scrap>()
-                               .Where(o => o.no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
-                               .WithCache()
-                               .First();
-            if (oaList == null)
-            {
-                throw new MessageException("未查询到符合条件的报废单!");
-            }
-            //查询申请人电话
-            var apply_phone = Db.Queryable<p_employee>()
-                                .Where(ss => ss.id == oaList.applicant_id)
-                                .Select(ss => ss.phone_no)
-                                .WithCache()
-                                .First();
+                var oaList = Db.Queryable<r_assets_scrap>()
+                                   .Where(o => o.no == entity.apply_no && o.org_id == userinfo.org_id && (o.state == 26 || o.state == 36))
+                                   .WithCache()
+                                   .First();
+                if (oaList == null)
+                {
+                    throw new MessageException("未查询到符合条件的报废单!");
+                }
+                //查询申请人电话
+                var apply_phone = Db.Queryable<p_employee>()
+                                    .Where(ss => ss.id == oaList.applicant_id)
+                                    .Select(ss => ss.phone_no)
+                                    .WithCache()
+                                    .First();
 
-            //查询当前登录人不是机构人员 则所属部门关联角色
-            var roleList = new List<int>();
-            int role_id = oaList.await_verifier_id.Value;
-            int await_verifier_ids = oaList.await_verifier_id.Value;
-            bool is_org = oaList.is_org.Value;
-            roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
-
-
-            //查询当前审核人信息
-            var currentlevel = oaList.level;
-            var process_currentMes = Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
-                                  .Where((p, pr) => p.id == oaList.process_id && p.level == currentlevel)
-                                  .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
-                                  .WithCache()
-                                  .First();
-
-            if (process_currentMes == null)
-            {
-                throw new MessageException("未获取到当前审核流程信息");
-            }
-
-            var storeroleList = new List<int>();
-            //查询当前门店所有角色
-            int store_id = entity.store_id;
-            storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+                //查询当前登录人不是机构人员 则所属部门关联角色
+                var roleList = new List<int>();
+                int role_id = oaList.await_verifier_id.Value;
+                int await_verifier_ids = oaList.await_verifier_id.Value;
+                bool is_org = oaList.is_org.Value;
+                roleList = GetRole(entity, userinfo, role_id, await_verifier_ids, is_org, roleList);
 
 
-           
+                //查询当前审核人信息
+                var currentlevel = oaList.level;
+                var process_currentMes = Db.Queryable<p_process_detials, p_process>((p, pr) => new object[] { JoinType.Left, p.id == pr.id })
+                                      .Where((p, pr) => p.id == oaList.process_id && p.level == currentlevel)
+                                      .Select((p, pr) => new process_currentMesModel { dept_id = p.dept_id, role_id = p.role_id, employee_id = p.employee_id.Value, dept_name = p.dept_name, role_name = p.role_name, id = p.id, name = pr.name, leave_type_id = pr.leave_type_id, leave_type = pr.leave_type })
+                                      .WithCache()
+                                      .First();
+
+                if (process_currentMes == null)
+                {
+                    throw new MessageException("未获取到当前审核流程信息");
+                }
+
+                var storeroleList = new List<int>();
+                //查询当前门店所有角色
+                int store_id = entity.store_id;
+                storeroleList = GetNewRole(userinfo, store_id, storeroleList);
+
+
+
                 var newVerify = new r_verify();//审核表
                 var newVerifyDetail = new r_verify_detials();//审核详情表
                 var new_leave = new r_assets_scrap();//报废表
@@ -1766,7 +1766,7 @@ namespace Service.Repository.Implements.Business
                 }
                 else
                 {
-                    
+
                     if (entity.approval_state == 34)
                     {
                         //新增报废信息
@@ -1812,7 +1812,7 @@ namespace Service.Repository.Implements.Business
 
                 //修改报废表
                 Db.Updateable(new_leave)
-                  .SetColumns(s => new r_assets_scrap { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org,verify_remark=entity.verify_remark })
+                  .SetColumns(s => new r_assets_scrap { await_verifier_id = await_verifier_id, await_verifier = await_verifier, level = new_leave.level, verifier = new_leave.verifier, verifier_id = new_leave.verifier_id, verify_time = new_leave.verify_time, state = entity.approval_state, is_org = new_leave.is_org, verify_remark = entity.verify_remark })
                   .Where(s => s.no == entity.apply_no)
                   .RemoveDataCache()
                   .EnableDiffLogEvent()
@@ -1849,7 +1849,7 @@ namespace Service.Repository.Implements.Business
 
         }
 
-     
+
         /// <summary>
         /// 报损报溢审核
         /// </summary>
@@ -1869,7 +1869,7 @@ namespace Service.Repository.Implements.Business
             var employeeSocket = new List<WebSocketModel>();
 
             var userinfo = new Tools.IdentityModels.GetUser().userInfo;
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //查询单子可不可以审核，有没有权限
                 var oaList = Db.Queryable<bus_loss_overflow>()
@@ -2085,7 +2085,7 @@ namespace Service.Repository.Implements.Business
 
 
         }
-       
+
         #endregion
 
         /// <summary>
@@ -2093,7 +2093,7 @@ namespace Service.Repository.Implements.Business
         /// </summary>
         /// <param name="userinfo"></param>
         /// <param name="list"></param>
-        public void SetSum(Tools.IdentityModels.GetUser.UserInfo userinfo,bus_loss_overflow list,int asset_id)
+        public void SetSum(Tools.IdentityModels.GetUser.UserInfo userinfo, bus_loss_overflow list, int asset_id)
         {
             //查询库存
             var storage = Db.Queryable<bus_storage>()
@@ -2106,8 +2106,8 @@ namespace Service.Repository.Implements.Business
                 throw new MessageException("未找到对应库存！");
             }
 
-            var num_d =list.process_id==1? storage.num - 1:storage.num-list.num;
-            var use_num_d = list.process_id == 1 ? storage.use_num - 1:storage.use_num-list.num;
+            var num_d = list.process_id == 1 ? storage.num - 1 : storage.num - list.num;
+            var use_num_d = list.process_id == 1 ? storage.use_num - 1 : storage.use_num - list.num;
             if (num_d < 0 || use_num_d < 0)
             {
                 throw new MessageException("库存数量不足");
@@ -2129,7 +2129,7 @@ namespace Service.Repository.Implements.Business
                                  .WithCache()
                                  .ToList();
 
-            var d_num = list.process_id == 1 ?1:list.num;
+            var d_num = list.process_id == 1 ? 1 : list.num;
             //修改库存明细数量
             foreach (var storage_detials in storage_detail)
             {
@@ -2190,9 +2190,9 @@ namespace Service.Repository.Implements.Business
                 throw new MessageException("未找到对应库存！");
             }
 
-            var num_d =  storage.num + list.num;
+            var num_d = storage.num + list.num;
             var use_num_d = storage.use_num + list.num;
-            if (num_d !=use_num_d)
+            if (num_d != use_num_d)
             {
                 throw new MessageException("实际可用库存数量不相等");
             }
@@ -2205,7 +2205,7 @@ namespace Service.Repository.Implements.Business
               .EnableDiffLogEvent()
               .ExecuteCommand();
 
-           
+
 
             var bill = new bus_put_in_storage();
             bill.bill_no = "RK" + DateTime.Now.ToString("yyMMdd");
@@ -2244,7 +2244,7 @@ namespace Service.Repository.Implements.Business
             //查询基础数据
             var base_detail = Db.Queryable<p_std_item, p_std_item_detials>((s, sd) => new object[] { JoinType.Left, s.id == sd.id })
                               .Where((s, sd) => sd.id == list.std_item_id && sd.manufactor_id == list.manufactor_id && sd.spec == list.spec)
-                              .Select((s, sd) => new { sd.id, sd.manufactor_id, s.name, s.type, s.type_id, sd.buy_price, sd.buy_unit, sd.manufactor, sd.price, sd.spec, s.unit,sd.approval_no,sd.buy_multiple })
+                              .Select((s, sd) => new { sd.id, sd.manufactor_id, s.name, s.type, s.type_id, sd.buy_price, sd.buy_unit, sd.manufactor, sd.price, sd.spec, s.unit, sd.approval_no, sd.buy_multiple })
                               .WithCache()
                               .First();
 
@@ -2254,32 +2254,32 @@ namespace Service.Repository.Implements.Business
             }
 
             var no = DateTime.Now.ToString("yyMMddfff");
-            var storage_detials = new bus_storage_detials { approval_no = base_detail.approval_no, bill_no = bill.bill_no, bill_num = list.num, buy_multiple = base_detail.buy_multiple, buy_price = base_detail.buy_price, buy_unit = base_detail.buy_unit,  id = storage.id, manufactor = base_detail.manufactor, manufactor_id = base_detail.manufactor_id, name = list.name, no = no, num = list.num , price = base_detail.price, spec = list.spec, std_item_id = list.std_item_id, type = list.item_type, type_id = list.item_type_id, unit = base_detail.unit, use_num = list.num, put_in_type_id = 5, put_in_type = "报溢", put_in_num = list.num, buy_date = DateTime.Now };
+            var storage_detials = new bus_storage_detials { approval_no = base_detail.approval_no, bill_no = bill.bill_no, bill_num = list.num, buy_multiple = base_detail.buy_multiple, buy_price = base_detail.buy_price, buy_unit = base_detail.buy_unit, id = storage.id, manufactor = base_detail.manufactor, manufactor_id = base_detail.manufactor_id, name = list.name, no = no, num = list.num, price = base_detail.price, spec = list.spec, std_item_id = list.std_item_id, type = list.item_type, type_id = list.item_type_id, unit = base_detail.unit, use_num = list.num, put_in_type_id = 5, put_in_type = "报溢", put_in_num = list.num, buy_date = DateTime.Now };
 
             //添加库存明细
             Db.Insertable(storage_detials).ExecuteCommand();
             redisCache.RemoveAll<bus_storage_detials>();
 
             //添加入库单明细
-            var put_in_List=new bus_put_in_storage_detials { bill_no = bill.bill_no, name = list.name, spec = list.spec, std_item_id = list.std_item_id, unit = list.unit, approval_no = base_detail.approval_no, buy_multiple = base_detail.buy_multiple, buy_price = base_detail.buy_price, buy_unit = base_detail.buy_unit, manufactor = base_detail.manufactor, manufactor_id = base_detail.manufactor_id, price = base_detail.price, type = list.item_type, type_id = list.item_type_id, buy_date = DateTime.Now.Date , num = Convert.ToInt16(list.num),no=0 };
+            var put_in_List = new bus_put_in_storage_detials { bill_no = bill.bill_no, name = list.name, spec = list.spec, std_item_id = list.std_item_id, unit = list.unit, approval_no = base_detail.approval_no, buy_multiple = base_detail.buy_multiple, buy_price = base_detail.buy_price, buy_unit = base_detail.buy_unit, manufactor = base_detail.manufactor, manufactor_id = base_detail.manufactor_id, price = base_detail.price, type = list.item_type, type_id = list.item_type_id, buy_date = DateTime.Now.Date, num = Convert.ToInt16(list.num), no = 0 };
             Db.Insertable(put_in_List).ExecuteCommand();
             redisCache.RemoveAll<bus_put_in_storage_detials>();
 
             //获取固定资产基础项目ID
             var assets_std_list = Db.Queryable<p_std_item, b_codebase>((si, cb) => new object[] { JoinType.Left, si.type_id == cb.id }).Where((si, cb) => cb.property_id == 1).WithCache().Select((si, cb) => new { si.id, cb.year }).ToList();
 
-           
+
             //固资入库
             if (list.property_id == 1)
             {
-              
+
                 //固定资产列表
                 var assetsList = new List<bus_assets>();
                 List<bus_put_in_assets> put_in_assets = new List<bus_put_in_assets>();
                 for (int i = 1; i <= list.num; i++)
                 {
                     assetsList.Add(new bus_assets { bill_no = bill.bill_no, buy_date = DateTime.Now.Date, buy_price = base_detail.buy_price, manufactor = base_detail.manufactor, manufactor_id = base_detail.manufactor_id, name = base_detail.name, no = $"{base_detail.type_id}{bill.bill_no.Replace("RK", "")}{i}", org_id = userinfo.org_id, price = base_detail.price, spec = base_detail.spec, state = 30, std_item_id = list.std_item_id, store_id = list.store_id, type = base_detail.type, type_id = base_detail.type_id.Value, unit = base_detail.unit, net_salvage_rate = 5, net_salvage = base_detail.buy_price * 5 / 100, total_depreciation = 0, depreciation = base_detail.buy_price * 95 / 100, remaining_depreciation = base_detail.buy_price * 95 / 100, net_residual = base_detail.buy_price, month_depreciation = 95 / assets_std_list.Where(w => w.id == base_detail.id).FirstOrDefault().year / 100 / 12 * base_detail.buy_price });
-                                       
+
                 }
 
                 //添加固定资产

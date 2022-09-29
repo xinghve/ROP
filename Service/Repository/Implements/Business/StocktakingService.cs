@@ -31,7 +31,7 @@ namespace Service.Repository.Implements.Business
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 if (entity.stocktaking_Detials.Count == 0)
                 {
@@ -195,7 +195,7 @@ namespace Service.Repository.Implements.Business
             //获取用户信息
             var userInfo = new Tools.IdentityModels.GetUser().userInfo;
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var stocktaking = Db.Queryable<bus_stocktaking>().Where(w => w.no == entity.no).WithCache().First();
                 if (stocktaking.state != 45)

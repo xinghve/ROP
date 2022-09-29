@@ -151,7 +151,7 @@ namespace Service.Repository.Implements.Crm
                 throw new MessageException("此活动已存在！");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var activityEntity = new c_activity();
                 activityEntity.org_id = userInfo.org_id;
@@ -263,7 +263,7 @@ namespace Service.Repository.Implements.Crm
                 throw new MessageException("此活动已存在！");
             }
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 var activityEntity = new c_activity();
                 activityEntity.name = entity.activityModel.name;
@@ -385,7 +385,7 @@ namespace Service.Repository.Implements.Crm
             {
                 throw new MessageException("当前活动正在进行中，不能删除!");
             }
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 ////删除优惠券
                 //Db.Deleteable<c_activity_coupon>().Where(w => w.activity_id == id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
@@ -414,7 +414,7 @@ namespace Service.Repository.Implements.Crm
 
             var list = new List<c_archives_activity_coupon>();
 
-            var result = await Db.Ado.UseTranAsync(() =>
+            var result = Db.Ado.UseTran(() =>
             {
                 //删除此用户领取活动的其他优惠券
                 Db.Deleteable<c_archives_activity_coupon>().Where(s => entity.aArray.Contains(s.archives_id) && s.activity_id == entity.id).RemoveDataCache().EnableDiffLogEvent().ExecuteCommand();
